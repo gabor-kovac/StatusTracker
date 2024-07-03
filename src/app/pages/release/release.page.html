@@ -1,0 +1,89 @@
+<a class="p-4 ms-2 m-3 text-white shadow-sm bg-secondary bg-gradient bg-opacity-75" mat-stroked-button (click)="goHome()" title="Go back">
+    <i class="bi bi-arrow-left"></i>
+    <span class="ps-3">Go back</span>
+</a>
+
+<div class="container-fluid col w-100" *ngIf="applicationReleaseList != [] && applicationReleaseList.length > 0; else releasesNotFound">
+    <div class="rowHeaders row align-items-start fw-medium border-bottom">
+        <div class="col-12 col-md-4 col-lg-3 col-xl-2 py-2">Application</div>
+        <div class="col-12 col-md-8 col-lg-9 col-xl-10 py-2">Releases</div>
+    </div>
+    <div class="row align-items-start border-bottom mt-2 pb-2" *ngFor="let applicationRelease of applicationReleaseList">
+        <div class="col-12 col-md-4 col-lg-3 col-xl-2 appNameElement">{{ applicationRelease.applicationName }}</div>
+        <div class="col-12 col-md-8 col-lg-9 col-xl-10">
+            <section *ngIf="applicationRelease.releases.length; else releasesNotFound">
+                <mat-accordion *ngFor="let release of applicationRelease.releases">
+                    <mat-expansion-panel class="mb-2" disabled="{{ (release.tests.length == 0) ? true : false }}">
+                        <mat-expansion-panel-header class="border-bottom">
+                            <mat-panel-title>
+                                <a href="https://github.com/gabor-kovac/{{ applicationRelease.applicationName }}/releases/tag/{{ release.release }}" target="_blank" title="View release on github" class="btn bg-gradient bg-primary text-white me-3 text-decoration-none" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                    <i class="bi bi-box-arrow-up-left">&nbsp;</i>
+                                    view
+                                </a>
+                                {{ release.release }}
+                                <span class="ms-2 fw-medium" [ngClass]="release.releaseStatus === 'Completed' ? 'text-success' : 'text-danger' ">{{ release.releaseStatus ? release.releaseStatus + ' latest test' : '' }}</span>
+                            </mat-panel-title>
+                            <mat-panel-description title="Click 'view' to see all assets">{{ release.tests.length ? "showing last "+release.tests.length+" of "+release.assetCount! : "no test was performed" }}</mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <section *ngIf="release.tests.length">
+                            <mat-card style="border-radius: 0;" class="border-bottom" *ngFor="let test of release.displayedTests; let i = index">
+                                <mat-card-header>
+                                    <mat-card-title>
+                                        #{{ release.assetCount - release.tests.indexOf(test) }} -
+                                        <span class="fs-5 bold" [ngClass]="test.summary['@outcome'] === 'Completed' ? 'text-success' : 'text-danger' ">{{ test.summary['@outcome'] }}</span>
+                                        
+                                    </mat-card-title>
+                                    <mat-card-subtitle class="my-2 mb-3">
+                                        <span class="counters me-1 mb-1 fw-normal align-top badge rounded-pill bg-secondary bg-gradient">
+                                            <i class="bi bi-boxes"></i>
+                                            {{ test.summary.Counters['@total'] }} total
+                                        </span>
+                                        <span class="counters me-1 mb-1 fw-normal align-top badge rounded-pill bg-primary bg-gradient">
+                                            <i class="bi bi-gear"></i>
+                                            {{ test.summary.Counters['@executed'] }} executed
+                                        </span>
+                                        <span class="counters me-1 mb-1 fw-normal align-top badge rounded-pill bg-success bg-gradient">
+                                            <i class="bi bi-check2-circle"></i>
+                                            {{ test.summary.Counters['@passed'] }} passed
+                                        </span>
+                                        <span class="counters me-1 mb-1 fw-normal align-top badge rounded-pill bg-warning bg-gradient">
+                                            <i class="bi bi-exclamation-triangle"></i>
+                                            {{ test.summary.Counters['@failed'] }} failed
+                                        </span>
+                                        <span class="counters me-1 mb-1 fw-normal align-top badge rounded-pill bg-danger bg-gradient">
+                                            <i class="bi bi-x-octagon"></i>
+                                            {{ test.summary.Counters['@failed'] }} error
+                                        </span>
+                                        
+                                    </mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <p>Date:
+                                        {{ test.dateTime | date:'yyyy-MM-dd - HH:mm:ss' }}
+                                    </p>
+                                    <p>Test file: 
+                                        <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, .125rem, 0);" href="https://github.com/gabor-kovac/{{ applicationRelease.applicationName }}/releases/download/{{ release.release }}/{{ test.testFile.substring(7) }}" target="_blank" title="Download test file">
+                                        {{ test.testFile.substring(7) }}
+                                        <i class="bi bi-download"></i>
+                                    </a>
+                                    </p>
+                                </mat-card-content>
+                            </mat-card>
+                            <mat-paginator *ngIf="release.tests.length > release.pageSize"
+                                [pageSizeOptions]="[5, 10, 25, 100]"
+                                [pageSize]="release.pageSize"
+                                [length]="release.tests.length"
+                                [showFirstLastButtons]="true"
+                                (page)="onPageChange($event, release.tests, release.release)">
+                            </mat-paginator>
+                        </section>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </section>
+        </div>
+    </div>
+</div>
+
+<ng-template #releasesNotFound>
+    <span>No releases found</span>
+</ng-template>

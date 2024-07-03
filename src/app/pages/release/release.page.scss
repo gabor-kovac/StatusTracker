@@ -1,0 +1,30 @@
+::ng-deep .mat-expansion-panel-body {
+	padding: 0 !important;
+}
+
+.counters {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.7em;
+}
+
+@media (max-width: 768px) {
+    .appNameElement::before {
+        display: inline-block;
+        content: 'Application: ';
+        font-weight: bold;
+        padding: .5em;
+        padding-left: 0;
+    }
+    .rowHeaders {
+        display: none;
+    }
+}
+
+.no-indent {
+    margin-left: -1em;
+}
+
+summary:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,28 @@
+{
+"name": "Application-Adapter",
+"version": "null",
+"updated": 1717678137694,
+"wikiVersion": "2.5.0",
+"releaseCandidates": ["1.1.0","1.10.0","1.11.0","1.12.0","1.13.0","1.14.0","1.15.0","1.16.0","1.17.0","1.18.0","1.2.0","1.3.0","1.4.0","1.5.0","1.6.0","1.7.0","1.8.0","1.9.0","2.1.0","2.10.0","2.11.0","2.2.0","2.3.0","2.4.0","2.5.0","2.6.0","2.7.0","2.8.0"],
+"tags": ["1.0.1","1.1.0","1.10.0","1.11.0","1.12.0","1.13.0","1.14.0","1.15.0","1.16.0","1.17.0","1.18.0","1.2.0","1.3.0","1.4.0","1.5.0","1.6.0","1.7.0","1.8.0","1.9.0","2.1.0","2.10.0","2.11.0","2.2.0","2.3.0","2.4.0","2.5.0","2.6.0","2.7.0","2.8.0"],
+"features": [
+{
+"branch": "can-fix",
+"last_commit_sha": "db9bba8e5b43a2c7a4d6aaec6a48666d9e41512d",
+"last_commit_message": "AssemblyVersion increased to: 2.11.5",
+"last_commit_date": "2024-06-06T12:44:22Z",
+"last_commit_author": "dev007",
+"last_commit_scan_result": "FAILED",
+"last_commit_scan_date": "2024-06-06T12:46:58Z",
+"pull_requests": []
+},
+{
+"branch": "static-consumer",
+"last_commit_sha": "f8824a78cee45d7ff606f4cf80038c1b9e413f3b",
+"last_commit_message": "AssemblyVersion increased to: 2.11.4",
+"last_commit_date": "2024-06-05T11:36:12Z",
+"last_commit_author": "gabor-kovac",
+"pull_requests": []
+}
+]
+}

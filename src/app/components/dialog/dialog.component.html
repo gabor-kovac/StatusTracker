@@ -1,0 +1,12 @@
+<div id="dialogContainer" *ngIf="this.open" class="bg-black bg-opacity-75 h-100 w-100 d-block position-fixed top-0 start-0" style="z-index: 100;">
+<dialog open="{{ this.open ? open : '' }}" class="text-danger fw-bolder position-fixed bottom-50 left-50">
+    <h3>Extra Sonar projects were found that don't point to Github repositories!</h3>
+    <ul class="list-unstyled fw-bolder pt-1 ps-1 fs-5">
+        <li *ngFor="let extraProject of this.extraProjects">
+            {{ extraProject }}
+        </li>
+    </ul>
+    <a class="btn btn-danger" href="#" (click)="dismissDialog()">Dismiss<i class="bi bi-x-circle ps-2"></i></a>
+    <a class="btn btn-primary float-end" href="https://sonarcloud.io/organizations/example/projects" target="_blank">sonarcloud.io<i class="bi bi-arrow-right ps-1"></i></a>
+</dialog>
+</div>

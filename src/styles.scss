@@ -1,0 +1,187 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; }
+* {
+    font-family: "Helvetica Neue", sans-serif;
+    font-weight: 300;
+}
+.pointer {
+    cursor: pointer;
+}
+
+.hover-light:hover {
+    color: var(--bs-yellow) !important;
+    transition: .2s ease;
+}
+
+.bold {
+    font-weight: 900 !important;
+}
+
+.jumbotron {
+    padding-bottom: 2em;
+}
+
+/* Variables */
+
+$whiteText: #dfe6e9;
+$whiteTextMuted: #afafaf;
+$whiterText: #e1e1e1;
+$darkBackground: #1c1e27;
+$deepBlue: #27374D;
+$deeperBlue: #1c1e27;
+$activeBlue: #163e5d;
+$activeBlueLight: #1e5885;
+$activeBlueLink: #0575FB;
+$activeRedLink: #ed1c24;
+$darkWarning: #87511375;
+$lightWarning: #d1b92e;
+
+/* Dark mode */ 
+
+body.dark-mode {
+
+    background-color: $darkBackground !important;
+    color: $whiteText !important;
+
+    p {
+        color: $whiteText;
+    }
+
+    .mat-expansion-panel {
+        background-color: $deepBlue;
+        color: $whiterText;
+
+        .border-bottom {
+            border-bottom: none !important;
+        }
+    }
+
+    .mat-expansion-panel[ng-reflect-disabled=true] {
+        background-color: $deeperBlue;
+    }
+
+    .mat-expansion-panel-header-title {
+        color: $whiterText;
+    }
+
+    .mat-expansion-panel-header[aria-disabled=true] .mat-expansion-panel-header-title, .mat-expansion-panel-header[aria-disabled=true] .mat-expansion-panel-header-description {
+        color: $whiteTextMuted;
+    }
+
+    .mat-expansion-panel-header-description, .mat-expansion-indicator::after {
+        color: $whiterText;
+    }
+
+    .mat-mdc-card {
+        --mdc-elevated-card-container-color: unset;
+    }
+
+    .mat-mdc-table {
+        background-color: $deeperBlue;
+        
+    }
+
+    .mat-mdc-outlined-button:not(:disabled) {
+        color: $whiterText;
+        background-color: $activeBlue;
+    }
+
+    .mdc-data-table__header-cell {
+        color: $whiteText;
+    }
+
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: $deepBlue;
+    }
+    .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+        color: $whiteText;
+    }
+    .mdc-text-field .mdc-text-field__input {
+        caret-color: $activeBlueLight;
+    }
+
+    .mdc-menu-surface {
+        background-color: $deeperBlue;
+        
+    }
+    .mdc-list-item__primary-text {
+        color: $whiteText;
+    }
+
+    .mat-mdc-paginator {
+        background-color: $deeperBlue;
+        color: $whiteTextMuted;
+    }
+
+    .mat-mdc-select-value {
+        color: $whiteTextMuted;
+    }
+    .mat-mdc-paginator-page-size-select {
+        background-color: $deepBlue;
+    }
+    .mat-mdc-icon-button[disabled] .mat-mdc-paginator-icon {
+        fill: $whiteTextMuted;
+    }
+    .mat-mdc-icon-button .mat-mdc-paginator-icon {
+        fill: $whiterText;
+    }
+
+    .clickable {
+        text-decoration: none;
+        color: $activeBlueLink !important;
+
+        &:hover {
+            text-decoration: underline;
+            color: $activeRedLink !important;
+        }
+    }
+
+    .bg-warning-dark {
+        background-color: $darkWarning !important;
+    }
+    
+    td, th {
+        color: $whiteText;
+        background-color: $deeperBlue;
+    }
+    .text-info-emphasis {
+        color: #0795b1 !important;
+    }
+
+    .warning-border {
+        border-right: 2px solid $darkWarning;
+    }
+}
+
+/* Light mode */
+
+body.light-mode {
+
+    .bg-warning-dark {
+        background-color: rgba(var(--bs-warning-rgb), var(--bs-bg-opacity)) !important;
+    }
+    .warning-border {
+        border-right: 2px solid #ffe7a4;
+    }
+
+    .clickable {
+        text-decoration: none;
+        color: $activeBlueLink;
+        
+        &:hover {
+            text-decoration: underline;
+            color: $activeRedLink !important;
+            
+        }
+    }
+
+    .mat-expansion-panel-header[aria-disabled=true] .mat-expansion-panel-header-title, .mat-expansion-panel-header[aria-disabled=true] .mat-expansion-panel-header-description {
+        color: #757575;
+    }
+
+    .mat-accordion .mat-expansion-panel {
+        border-top: 1px solid #e9e3e3;
+    }
+}

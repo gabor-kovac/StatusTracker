@@ -1,0 +1,55 @@
+name: Build and deploy Angular app to Github Pages
+on:
+  workflow_dispatch:
+  push:
+    branches: "main"
+  # schedule:
+  #   - cron: '32 1 * * *'
+
+jobs:
+  build-and-deploy:
+    timeout-minutes: 30
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install tools
+        run: sudo apt install moreutils -y
+
+      - name: Install npm dependencies
+        run: npm install
+
+      # - name: Run scheduled Sonar check
+      #   if: ${{ github.event_name == 'schedule' }}
+      #   run: |
+      #     chmod +x ./sonarcheck.sh
+      #     chmod +x ./gh-get-json.sh
+      #     bash ./sonarcheck.sh
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #     GITHUB_TOKEN: ${{ secrets.CR_PAT }}
+        
+      - name: Run pre build
+        run: npm run pre-build
+
+      - name: Build Angular app
+        run: npm run build
+        
+      - name: Run post build
+        run: npm run post-build
+
+      - name: Deploy to Github Pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v4.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: page
+          publish_dir: ./docs
+          enable_jekyll: false

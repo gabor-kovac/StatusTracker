@@ -1,0 +1,38 @@
+[
+    {
+        "tagName": "test-tag",
+        "tagUrl": "https://github.com/gabor-kovac/Application-Executable/tree/test-tag",
+        "apps": [
+            {
+                "name": "secure-mosquitto",
+                "version": "1.6"
+            },
+            {
+                "name": "Application-Agent",
+                "version": "1.8.0"
+            },
+            {
+                "name": "Application-Adapter",
+                "version": "1.15.2-device-name-fix"
+            }
+        ]
+    },
+    {
+        "tagName": "test-tag2",
+        "tagUrl": "https://github.com/gabor-kovac/Application-Executable/tree/test-tag2",
+        "apps": [
+            {
+                "name": "secure-mosquitto",
+                "version": "1.6"
+            },
+            {
+                "name": "Application-Agent",
+                "version": "1.8.0"
+            },
+            {
+                "name": "Application-Adapter",
+                "version": "1.15.2-device-name-fix"
+            }
+        ]
+    }
+]

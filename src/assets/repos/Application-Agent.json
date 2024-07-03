@@ -1,0 +1,50 @@
+{
+"name": "Application-Agent",
+"version": "2.17.0",
+"updated": 1720005253397,
+"wikiVersion": "2.26.0",
+"releaseCandidates": ["1.0.0","2.0.0","2.1.0","2.10.0","2.11.0","2.12.0","2.13.0","2.14.0","2.15.0","2.16.0","2.17.0","2.18.0","2.19.0","2.2.0","2.20.0","2.21.0","2.22.0","2.23.0","2.24.0","2.3.0","2.4.0","2.5.0","2.6.0","2.7.0","2.8.0","2.9.0"],
+"tags": ["1.0.0","2.0.0","2.1.0","2.10.0","2.11.0","2.12.0","2.13.0","2.14.0","2.15.0","2.16.0","2.17.0","2.18.0","2.19.0","2.2.0","2.20.0","2.21.0","2.22.0","2.23.0","2.24.0","2.3.0","2.4.0","2.5.0","2.6.0","2.7.0","2.8.0","2.9.0"],
+"features": [
+{
+"branch": "connector",
+"last_commit_sha": "09eb03c529090a0fd3bd1c3b4d85881a99bae523",
+"last_commit_message": "Automated version to 2.7.1",
+"last_commit_date": "2022-06-14T14:01:43Z",
+"last_commit_author": "github-actions",
+"pull_requests": []
+},
+{
+"branch": "credentialBugFix",
+"last_commit_sha": "0c3ea6ec12ff8480741a9a5a712b7824f1c8711e",
+"last_commit_message": "Increased version to: 2.24.4",
+"last_commit_date": "2024-03-28T12:56:13Z",
+"last_commit_author": "github-actions[bot]",
+"pull_requests": []
+},
+{
+"branch": "custom-event",
+"last_commit_sha": "376fd7d2b397784d47177b0e4fec6b3d23fdb3c8",
+"last_commit_message": "Update README.md",
+"last_commit_date": "2023-04-26T09:29:30Z",
+"last_commit_author": "dev007",
+"pull_requests": []
+},
+{
+"branch": "uploadFileContentFix",
+"last_commit_sha": "382a4d67164f86aa1f40123f06787d7553177a5e",
+"last_commit_message": "Increased version to: 2.26.2",
+"last_commit_date": "2024-06-13T11:30:56Z",
+"last_commit_author": "github-actions[bot]",
+"pull_requests": [{"pr_number": 71, "pr_title": "Upload file content fix", "pr_author": { "id": "MD16VXNdcjIzNjF3NTM2", "is_bot": false, "login": "dev007", "name": "" }, "created_at": "2024-06-20T06:04:26Z"}]
+},
+{
+"branch": "usb",
+"last_commit_sha": "f3b4d8e6ed34ead764ebcf5e737f237ce322a6cc",
+"last_commit_message": "Increased version to: 2.26.15",
+"last_commit_date": "2024-07-03T11:14:07Z",
+"last_commit_author": "github-actions[bot]",
+"pull_requests": [{"pr_number": 72, "pr_title": "Usb storer", "pr_author": { "id": "MD16VXNdcjIzNjF3NTM2", "is_bot": false, "login": "dev007", "name": "" }, "created_at": "2024-06-20T06:04:59Z"}]
+}
+]
+}

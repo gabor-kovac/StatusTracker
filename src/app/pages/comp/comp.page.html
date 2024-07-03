@@ -1,0 +1,40 @@
+<div *ngIf="compatibleApps != [] && compatibleApps.length > 0; else appNotFound">
+    <table class="table">
+        <thead>
+            <tr class="col">
+                <th scope="col" class="justify-content-start align-items-center">
+                    <span class="ms-2 me-4 fw-medium">Application:</span>
+                    <mat-form-field appearance="fill" class="mt-4 w-50">
+                        <mat-select (selectionChange)="selectApp($event.value)" [(value)]="selectedAppName">
+                            <mat-option *ngFor="let app of uniqueApps" value="{{app.name}}">{{app.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </th>
+                <th scope="col" class="justify-content-start align-items-center">
+                    <span class="ms-2 me-4 fw-medium">Version:</span>
+                    <mat-form-field appearance="fill" class="mt-4 w-50">
+                        <mat-select (selectionChange)="selectVersion($event.value)" [(value)]="selectedAppVersion">
+                            <mat-option *ngFor="let version of appVersions" value="{{version}}">{{version}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="col" *ngFor="let app of compatibleApps">
+                <td class="col ps-3"><a target="_blank" title="Open package in new tab" href="https://ghcr.io/gabor-kovac/{{app.name}}">{{app.name}}</a></td>
+                <td class="col ps-3">{{app.version}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<ng-template #appNotFound>
+    <h2 class="p-2">App not found</h2>
+</ng-template>
+
+<a class="p-4 m-3 text-white shadow-sm bg-secondary bg-gradient bg-opacity-75" mat-stroked-button onclick="window.close()" title="Go back">
+    <i class="bi bi-arrow-left"></i>
+    <span class="ps-3">Go back</span>
+</a>

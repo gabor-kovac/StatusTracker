@@ -1,0 +1,235 @@
+<table mat-table [dataSource]="dataSource" aria-describedby="Applications" matSort>
+	<ng-container matColumnDef="name">
+		<th mat-header-cell *matHeaderCellDef class="position-relative">
+			<mat-form-field id="filterInput" class="m-0 mt-3 align-item-center w-100 mb-1">
+				<input matInput (keyup)="search($event.target)" [matAutocomplete]="auto" [(ngModel)]="searchValue" placeholder="Search...">
+				<button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue=null; search('')">
+					<mat-icon>clear</mat-icon>
+				</button>
+				<mat-autocomplete id="selectList" #auto="matAutocomplete" (optionSelected)="search($event.option)">
+					<mat-option *ngFor="let option of options" [value]="option">
+						{{option}}
+					</mat-option>
+				</mat-autocomplete>
+			</mat-form-field>
+			<div class="d-flex flex-row">
+				<div class="sortButton" mat-sort-header="name" arrowPosition="before" disableClear="true" title="Sort by name">Name</div>
+				<div class="ms-2 sortButton" mat-sort-header="features" arrowPosition="before" disableClear="true" title="Sort by last commit">Last commit</div>
+			</div>
+		</th>
+		<td mat-cell *matCellDef="let app">
+			<p class="pt-3">
+				<a class="clickable" href="https://github.com/gabor-kovac/{{app.name}}" target="_blank" title="Open app repo in new tab">
+					{{app.name}}
+				</a>
+			</p>
+		</td>
+		
+	</ng-container>
+
+	<ng-container matColumnDef="version">
+		<th mat-header-cell *matHeaderCellDef title="Release branch version">Release</th>
+		<td mat-cell *matCellDef="let app">
+			<p *ngIf="app.version; else noVersion" class="pt-3">{{app.version}}</p>
+			<ng-template #noVersion>
+				<p class="pt-3 pointer" title="Version number not found">-</p>
+			</ng-template>
+		</td>
+	</ng-container>
+
+	<ng-container matColumnDef="wikiVersion">
+		<th mat-header-cell *matHeaderCellDef title="Wiki version">Wiki</th>
+		<td mat-cell *matCellDef="let app">
+			<ng-container *ngIf="app.wikiVersion == null; else wikiVersionFound">
+				<p class="text-danger fw-medium pt-3 pointer position-relative" title="Missing wiki version!">
+					Error
+					<i class="position-absolute top-0 bi bi-exclamation-circle-fill"></i>
+				</p>
+			</ng-container>
+			<ng-template #wikiVersionFound>
+				<ng-container *ngIf="app.version == app.wikiVersion; else wikiVersionMissmatch">
+					<p class="text-success fw-medium pt-3 pointer position-relative">
+						{{app.wikiVersion}}
+						<i class="position-absolute top-0 bi bi-check-circle-fill"></i>
+					</p>
+				</ng-container>
+			</ng-template>
+			<ng-template #wikiVersionMissmatch>
+				<p class="text-warning fw-medium pt-3 pointer position-relative" title="Wiki version doesn't match release version!">
+					{{app.wikiVersion}}
+					<i class="position-absolute top-0 bi bi-exclamation-circle-fill"></i>
+				</p>
+			</ng-template>
+		</td>
+	</ng-container>
+
+	<ng-container matColumnDef="releaseCandidates">
+		<th mat-header-cell *matHeaderCellDef title="Tags more recent than release">Release Candidates</th>
+		<td mat-cell *matCellDef="let app">
+			<mat-accordion *ngIf="app.releaseCandidates.length > 0; else noRC">
+				<mat-expansion-panel>
+					<mat-expansion-panel-header title="Click to view all release candidates">
+						<mat-panel-title>
+							{{app.releaseCandidates[0]}}
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<ng-container *ngFor="let rc of app.releaseCandidates">
+						<a class="expandListElement" href="https://github.com/gabor-kovac/{{app.name}}/tree/{{rc}}" target="_blank" title="Open release candidate in new tab">
+							<p>{{rc}}</p>
+						</a>
+					</ng-container>
+				</mat-expansion-panel>
+			</mat-accordion>
+			<ng-template #noRC>
+				<p class="pt-3 pointer" title="Repository has no RC branches">No RCs</p>
+			</ng-template>
+		</td>
+	</ng-container>
+
+	<ng-container matColumnDef="tags">
+		<th mat-header-cell *matHeaderCellDef title="List of all tags">Tags</th>
+		<td mat-cell *matCellDef="let app">
+			<mat-accordion *ngIf="app.tags.length > 0; else noTags" class="pt-3">
+				<mat-expansion-panel>
+					<mat-expansion-panel-header title="Click to view all tags">
+						<mat-panel-title>
+							{{app.tags[0]}}
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<ng-container *ngFor="let tag of app.tags">
+						<a class="expandListElement"
+							href="https://github.com/gabor-kovac/{{app.name}}/tree/{{tag}}" target="_blank"
+							title="Open tag in new tab">
+							<p>{{tag}}</p>
+						</a>
+					</ng-container>
+				</mat-expansion-panel>
+			</mat-accordion>
+			<ng-template #noTags>
+				<p class="pt-3 pointer" title="Repository has no tag branches">No tags</p>
+			</ng-template>
+		</td>
+	</ng-container>
+
+	<ng-container matColumnDef="features">
+		<th mat-header-cell *matHeaderCellDef title="Branches other than main and release">Features</th>
+		<td mat-cell *matCellDef="let app">
+			<mat-accordion *ngIf="app.features.length > 0; else noFeatures" id="{{app.name}}">
+				<mat-expansion-panel>
+					<mat-expansion-panel-header title="Click to view all feature branches" [ngClass]="app['old'] ? 'bg-warning-dark bg-opacity-25 border-bottom' : 'border-bottom'">
+						<mat-panel-title class="justify-content-start">
+							<i *ngIf="app['old']" class="bi bi-exclamation-circle-fill pe-2 text-warning"></i>
+							Latest commit on branch: {{app.features[0].branch}}
+						</mat-panel-title>
+						<mat-panel-description>
+							<span>{{app.features[0].last_commit_age}} ago</span>
+						</mat-panel-description>
+					</mat-expansion-panel-header>
+					<div matExpansionPanelContent [ngClass]="app['old'] ? 'warning-border' : ''">
+						<section class="align-items-start p-3 ps-4 pb-0 featureSection" *ngFor="let feature of app.displayedTests" [ngClass]="feature.old ? 'bg-warning-dark bg-opacity-25' : ''">
+							<p class="featureElement">
+								<span *ngIf="feature.old" title="Branch is more than {{branch_age_warning}} old" class="pointer text-warning fw-medium pb-1"><i class="bi bi-exclamation-circle-fill pe-1"></i>Old branch warning!</span>
+								<span><b class="fw-medium"><i class="bi bi-git text-primary"></i> Branch:</b>&nbsp;<a class="clickable" href="https://github.com/gabor-kovac/{{app.name}}/tree/{{feature.branch}}" target="_blank" title="Open branch in new tab">{{feature.branch}}</a></span>
+								<span>
+									<b class="fw-medium"><i class="bi bi-file-diff text-danger"></i> Last commit:</b>&nbsp;
+									<a class="clickable" href="https://github.com/gabor-kovac/{{app.name}}/commit/{{feature.last_commit_sha}}" target="_blank" title="Open commit '{{ feature.last_commit_sha }}' in new tab">{{feature.last_commit_message ? feature.last_commit_message.substr(0,100) : feature.last_commit_sha }}</a>
+								</span>
+								<span><b class="fw-medium"><i class="bi bi-person-circle text-success"></i> Last commit author:</b>&nbsp;{{feature.last_commit_author}}</span>
+								<span><b class="fw-medium"><i class="bi bi-clock text-info-emphasis"></i> Last commited:</b>&nbsp;<span class="pointer" title="{{ feature.last_commit_date }}">{{ feature.last_commit_age }} ago</span></span>
+								<span *ngIf="feature.last_commit_scan_result">
+									<b class="fw-medium"><i class="bi bi-cloud text-warning"></i> Last scan result:</b>&nbsp;
+									<a class="clickable" href="{{ feature.last_commit_scan_url }}" target="_blank" title="{{ feature.last_commit_scan_date }}">{{ feature.last_commit_scan_result.capitalize() }} {{ feature.last_commit_scan_age }} ago</a>
+								</span>
+							</p>
+							<section *ngIf="feature.pull_requests[0]; else noOpenRequests" class="mb-3 w-100">
+								<mat-accordion class="w-100">
+									<mat-expansion-panel>
+										<mat-expansion-panel-header class="border-bottom">
+											<mat-panel-title>Open pull requests [{{ feature.pull_requests.length }}]</mat-panel-title>
+										</mat-expansion-panel-header>
+										<ng-container *ngFor="let pull_request of feature.pull_requests">
+											<a class="d-block text-decoration-none text-black p-3 pb-0 border-bottom hover-darken" href="https://github.com/gabor-kovac/{{app.name}}/pull/{{pull_request.pr_number}}" target="_blank" title="Open pull in new tab">
+												<p class="pb-3 mb-0">
+													<span class="fw-medium">{{pull_request.pr_title}} <span class="fw-normal">#{{ pull_request.pr_number }}</span></span>
+													<span><b class="fw-medium">Author: </b>{{pull_request.pr_author.login}}</span>
+													<span><b class="fw-medium">Opened: </b><span class="pointer" title="{{ pull_request.created_at }}">{{ pull_request.age }} ago</span></span>
+												</p>
+											</a>
+										</ng-container>
+									</mat-expansion-panel>
+								</mat-accordion>
+							</section>
+							<ng-template #noOpenRequests>
+								<p>No open pull requests</p>
+							</ng-template>
+						</section>
+						<mat-paginator *ngIf="app.features.length > app.pageSize"
+							[pageSizeOptions]="[5, 10, 25, 100]"
+							[pageSize]="app.pageSize"
+							[length]="app.features.length"
+							[showFirstLastButtons]="true"
+							(page)="onPageChange($event, app.features, app.name)">
+						</mat-paginator>
+					</div>
+				</mat-expansion-panel>
+			</mat-accordion>
+			<ng-template #noFeatures>
+				<p class="pt-3 pointer" title="Repository has no feature branches">No features</p>
+			</ng-template>
+		</td>
+	</ng-container>
+
+	<ng-container matColumnDef="updated">
+		<th mat-header-cell *matHeaderCellDef>
+			
+		</th>
+		<td mat-cell *matCellDef="let app">
+			<div *ngIf="app.updated; else noInfo">
+				<p class="pt-3" *ngIf="!app.old_info; else oldInfo">
+					<i class="bi bi-check-circle text-info pointer" title="Info up to date: {{ app.updated | date }}"></i>
+				</p>
+				<ng-template #oldInfo>
+					<p class="pt-3">
+						<i class="bi bi-clock-history text-warning pointer" title="Info is old: {{ app.updated | date }}"></i>
+					</p>
+				</ng-template>
+			</div>
+			<ng-template #noInfo>
+				<p class="pt-3">
+					<i class="bi bi-question-circle pointer" title="Info age unknown"></i>
+				</p>
+			</ng-template>
+		</td>
+	</ng-container>
+
+	<ng-container matColumnDef="compatibilities">
+		<th mat-header-cell *matHeaderCellDef>
+			<div clas="d-flex">
+				<a class="p-4 w-100 text-white fw-light shadow-sm bg-primary bg-gradient bg-opacity-75" mat-stroked-button (click)="goReleases()" title="See the releases">
+					<span class="pe-3">Releases</span>
+					<i class="bi bi-card-checklist"></i>
+				</a>
+			</div>
+		</th>
+		<td mat-cell *matCellDef="let app">
+			<div class="d-flex" *ngIf="app.compatibilities">
+				<a class="p-4 w-100 shadow-sm" mat-stroked-button href="comp?app={{ app.name?.toLowerCase() }}&version={{ app.version }}" target="_blank" title="View compatibility of {{app.name + ' - ' + app.version}}">
+					<span class="pe-2">compatibilities</span>
+					<i class="bi bi-arrow-return-right"></i>
+				</a>
+			</div>
+		</td>
+	</ng-container>
+
+	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+	<tr mat-row *matRowDef="let appRow; columns: displayedColumns;"></tr>
+</table>
+
+<div id="table-end">
+	<mat-paginator #paginator
+		[pageSizeOptions]="[5, 10, 25, 100]"
+		[pageSize]="25" 
+		[length]="Applications.length"
+		[showFirstLastButtons]="true">
+	</mat-paginator>
+</div>
