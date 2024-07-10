@@ -1,8 +1,8 @@
 {
 "name": "Application-Agent",
 "version": "null",
-"updated": 1720606464365,
-"wikiVersion": "0.0.2",
+"updated": 1720606702395,
+"wikiVersion": "0.0.3",
 "releaseCandidates": [],
 "tags": [],
 "features": [
@@ -19,14 +19,6 @@
 "last_commit_sha": "f04784e56567a9e69e05a1492fb9ea98534002ac",
 "last_commit_message": "CI: bump package version to 0.0.17",
 "last_commit_date": "2024-07-10T09:58:18Z",
-"last_commit_author": "github-actions[bot]",
-"pull_requests": []
-},
-{
-"branch": "gabor-kovac-patch-2",
-"last_commit_sha": "145fe2f23b2592df0c12a0ca1af0a53032cb2165",
-"last_commit_message": "CI: bump package version to 0.0.5",
-"last_commit_date": "2024-07-10T10:13:59Z",
 "last_commit_author": "github-actions[bot]",
 "pull_requests": []
 }
