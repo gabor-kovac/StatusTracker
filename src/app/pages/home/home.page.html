@@ -8,7 +8,7 @@
 				</button>
 				<mat-autocomplete id="selectList" #auto="matAutocomplete" (optionSelected)="search($event.option)">
 					<mat-option *ngFor="let option of options" [value]="option">
-						{{option}}
+						{{ option }}
 					</mat-option>
 				</mat-autocomplete>
 			</mat-form-field>
@@ -19,18 +19,17 @@
 		</th>
 		<td mat-cell *matCellDef="let app">
 			<p class="pt-3">
-				<a class="clickable" href="https://github.com/gabor-kovac/{{app.name}}" target="_blank" title="Open app repo in new tab">
-					{{app.name}}
+				<a class="clickable" href="https://github.com/{{ env.organization }}/{{ app.name }}" target="_blank" title="Open app repo in new tab">
+					{{ app.name }}
 				</a>
 			</p>
 		</td>
-		
 	</ng-container>
 
 	<ng-container matColumnDef="version">
 		<th mat-header-cell *matHeaderCellDef title="Release branch version">Release</th>
 		<td mat-cell *matCellDef="let app">
-			<p *ngIf="app.version; else noVersion" class="pt-3">{{app.version}}</p>
+			<p *ngIf="app.version && app.version !== 'null'; else noVersion" class="pt-3">{{ app.version }}</p>
 			<ng-template #noVersion>
 				<p class="pt-3 pointer" title="Version number not found">-</p>
 			</ng-template>
@@ -49,14 +48,14 @@
 			<ng-template #wikiVersionFound>
 				<ng-container *ngIf="app.version == app.wikiVersion; else wikiVersionMissmatch">
 					<p class="text-success fw-medium pt-3 pointer position-relative">
-						{{app.wikiVersion}}
+						{{ app.wikiVersion }}
 						<i class="position-absolute top-0 bi bi-check-circle-fill"></i>
 					</p>
 				</ng-container>
 			</ng-template>
 			<ng-template #wikiVersionMissmatch>
 				<p class="text-warning fw-medium pt-3 pointer position-relative" title="Wiki version doesn't match release version!">
-					{{app.wikiVersion}}
+					{{ app.wikiVersion }}
 					<i class="position-absolute top-0 bi bi-exclamation-circle-fill"></i>
 				</p>
 			</ng-template>
@@ -70,12 +69,12 @@
 				<mat-expansion-panel>
 					<mat-expansion-panel-header title="Click to view all release candidates">
 						<mat-panel-title>
-							{{app.releaseCandidates[0]}}
+							{{ app.releaseCandidates[0] }}
 						</mat-panel-title>
 					</mat-expansion-panel-header>
 					<ng-container *ngFor="let rc of app.releaseCandidates">
-						<a class="expandListElement" href="https://github.com/gabor-kovac/{{app.name}}/tree/{{rc}}" target="_blank" title="Open release candidate in new tab">
-							<p>{{rc}}</p>
+						<a class="expandListElement" href="https://github.com/{{ env.organization }}/{{ app.name }}/tree/{{ rc }}" target="_blank" title="Open release candidate in new tab">
+							<p>{{ rc }}</p>
 						</a>
 					</ng-container>
 				</mat-expansion-panel>
@@ -93,14 +92,14 @@
 				<mat-expansion-panel>
 					<mat-expansion-panel-header title="Click to view all tags">
 						<mat-panel-title>
-							{{app.tags[0]}}
+							{{ app.tags[0] }}
 						</mat-panel-title>
 					</mat-expansion-panel-header>
 					<ng-container *ngFor="let tag of app.tags">
 						<a class="expandListElement"
-							href="https://github.com/gabor-kovac/{{app.name}}/tree/{{tag}}" target="_blank"
+							href="https://github.com/{{ env.organization }}/{{ app.name }}/tree/{{ tag }}" target="_blank"
 							title="Open tag in new tab">
-							<p>{{tag}}</p>
+							<p>{{ tag }}</p>
 						</a>
 					</ng-container>
 				</mat-expansion-panel>
@@ -114,31 +113,31 @@
 	<ng-container matColumnDef="features">
 		<th mat-header-cell *matHeaderCellDef title="Branches other than main and release">Features</th>
 		<td mat-cell *matCellDef="let app">
-			<mat-accordion *ngIf="app.features.length > 0; else noFeatures" id="{{app.name}}">
+			<mat-accordion *ngIf="app.features.length > 0; else noFeatures" id="{{ app.name }}">
 				<mat-expansion-panel>
 					<mat-expansion-panel-header title="Click to view all feature branches" [ngClass]="app['old'] ? 'bg-warning-dark bg-opacity-25 border-bottom' : 'border-bottom'">
 						<mat-panel-title class="justify-content-start">
 							<i *ngIf="app['old']" class="bi bi-exclamation-circle-fill pe-2 text-warning"></i>
-							Latest commit on branch: {{app.features[0].branch}}
+							Latest commit on branch: {{ app.features[0].branch }}
 						</mat-panel-title>
 						<mat-panel-description>
-							<span>{{app.features[0].last_commit_age}} ago</span>
+							<span>{{ app.features[0].last_commit_age }} ago</span>
 						</mat-panel-description>
 					</mat-expansion-panel-header>
 					<div matExpansionPanelContent [ngClass]="app['old'] ? 'warning-border' : ''">
 						<section class="align-items-start p-3 ps-4 pb-0 featureSection" *ngFor="let feature of app.displayedTests" [ngClass]="feature.old ? 'bg-warning-dark bg-opacity-25' : ''">
 							<p class="featureElement">
-								<span *ngIf="feature.old" title="Branch is more than {{branch_age_warning}} old" class="pointer text-warning fw-medium pb-1"><i class="bi bi-exclamation-circle-fill pe-1"></i>Old branch warning!</span>
-								<span><b class="fw-medium"><i class="bi bi-git text-primary"></i> Branch:</b>&nbsp;<a class="clickable" href="https://github.com/gabor-kovac/{{app.name}}/tree/{{feature.branch}}" target="_blank" title="Open branch in new tab">{{feature.branch}}</a></span>
+								<span *ngIf="feature.old" title="Branch is more than {{ branch_age_warning }} old" class="pointer text-warning fw-medium pb-1"><i class="bi bi-exclamation-circle-fill pe-1"></i>Old branch warning!</span>
+								<span><b class="fw-medium"><i class="bi bi-git text-primary"></i> Branch:</b>&nbsp;<a class="clickable" href="https://github.com/{{ env.organization }}/{{ app.name }}/tree/{{ feature.branch }}" target="_blank" title="Open branch in new tab">{{ feature.branch }}</a></span>
 								<span>
 									<b class="fw-medium"><i class="bi bi-file-diff text-danger"></i> Last commit:</b>&nbsp;
-									<a class="clickable" href="https://github.com/gabor-kovac/{{app.name}}/commit/{{feature.last_commit_sha}}" target="_blank" title="Open commit '{{ feature.last_commit_sha }}' in new tab">{{feature.last_commit_message ? feature.last_commit_message.substr(0,100) : feature.last_commit_sha }}</a>
+									<a class="clickable" href="https://github.com/{{ env.organization }}/{{ app.name }}/commit/{{ feature.last_commit_sha }}" target="_blank" title="Open commit '{{ feature.last_commit_sha }}' in new tab">{{ feature.last_commit_message ? feature.last_commit_message.substr(0,100) : feature.last_commit_sha }}</a>
 								</span>
-								<span><b class="fw-medium"><i class="bi bi-person-circle text-success"></i> Last commit author:</b>&nbsp;{{feature.last_commit_author}}</span>
+								<span><b class="fw-medium"><i class="bi bi-person-circle text-success"></i> Last commit author:</b>&nbsp;{{ feature.last_commit_author }}</span>
 								<span><b class="fw-medium"><i class="bi bi-clock text-info-emphasis"></i> Last commited:</b>&nbsp;<span class="pointer" title="{{ feature.last_commit_date }}">{{ feature.last_commit_age }} ago</span></span>
 								<span *ngIf="feature.last_commit_scan_result">
 									<b class="fw-medium"><i class="bi bi-cloud text-warning"></i> Last scan result:</b>&nbsp;
-									<a class="clickable" href="{{ feature.last_commit_scan_url }}" target="_blank" title="{{ feature.last_commit_scan_date }}">{{ feature.last_commit_scan_result.capitalize() }} {{ feature.last_commit_scan_age }} ago</a>
+									<a class="clickable" href="{{ feature.last_commit_scan_url }}" target="_blank" title="{{ feature.last_commit_scan_date }}">{{ feature.last_commit_scan_result | capitalize }} {{ feature.last_commit_scan_age }} ago</a>
 								</span>
 							</p>
 							<section *ngIf="feature.pull_requests[0]; else noOpenRequests" class="mb-3 w-100">
@@ -148,10 +147,10 @@
 											<mat-panel-title>Open pull requests [{{ feature.pull_requests.length }}]</mat-panel-title>
 										</mat-expansion-panel-header>
 										<ng-container *ngFor="let pull_request of feature.pull_requests">
-											<a class="d-block text-decoration-none text-black p-3 pb-0 border-bottom hover-darken" href="https://github.com/gabor-kovac/{{app.name}}/pull/{{pull_request.pr_number}}" target="_blank" title="Open pull in new tab">
+											<a class="d-block text-decoration-none text-black p-3 pb-0 border-bottom hover-darken" href="https://github.com/{{ env.organization }}/{{ app.name }}/pull/{{ pull_request.pr_number }}" target="_blank" title="Open pull in new tab">
 												<p class="pb-3 mb-0">
-													<span class="fw-medium">{{pull_request.pr_title}} <span class="fw-normal">#{{ pull_request.pr_number }}</span></span>
-													<span><b class="fw-medium">Author: </b>{{pull_request.pr_author.login}}</span>
+													<span class="fw-medium">{{ pull_request.pr_title }} <span class="fw-normal">#{{ pull_request.pr_number }}</span></span>
+													<span><b class="fw-medium">Author: </b>{{ pull_request.pr_author.login }}</span>
 													<span><b class="fw-medium">Opened: </b><span class="pointer" title="{{ pull_request.created_at }}">{{ pull_request.age }} ago</span></span>
 												</p>
 											</a>
@@ -163,7 +162,8 @@
 								<p>No open pull requests</p>
 							</ng-template>
 						</section>
-						<mat-paginator *ngIf="app.features.length > app.pageSize"
+						<mat-paginator 
+							*ngIf="app.features.length > app.pageSize"
 							[pageSizeOptions]="[5, 10, 25, 100]"
 							[pageSize]="app.pageSize"
 							[length]="app.features.length"
@@ -213,7 +213,7 @@
 		</th>
 		<td mat-cell *matCellDef="let app">
 			<div class="d-flex" *ngIf="app.compatibilities">
-				<a class="p-4 w-100 shadow-sm" mat-stroked-button href="comp?app={{ app.name?.toLowerCase() }}&version={{ app.version }}" target="_blank" title="View compatibility of {{app.name + ' - ' + app.version}}">
+				<a class="p-4 w-100 shadow-sm" mat-stroked-button href="comp?app={{ app.name | lowercase }}&version={{ app.version }}" target="_blank" title="View compatibility of {{ app.name }}:{{ app.version }}">
 					<span class="pe-2">compatibilities</span>
 					<i class="bi bi-arrow-return-right"></i>
 				</a>
@@ -225,11 +225,11 @@
 	<tr mat-row *matRowDef="let appRow; columns: displayedColumns;"></tr>
 </table>
 
-<div id="table-end">
+<div class="w-100 d-flex justify-content-center">
 	<mat-paginator #paginator
 		[pageSizeOptions]="[5, 10, 25, 100]"
 		[pageSize]="25" 
-		[length]="Applications.length"
+		[length]="applications.length"
 		[showFirstLastButtons]="true">
 	</mat-paginator>
 </div>

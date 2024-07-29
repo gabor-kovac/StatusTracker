@@ -1,16 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { Title } from '@angular/platform-browser';
-import { environment } from 'src/environments/environments';
 import { Application, Feature } from '../../classes/Application';
-import { CompatibilitiesService } from '../../services/compatibilities/compatibilities.service';
-import { Compatibility } from '../../classes/Compatibility';
-import { dateSort, parseElapsed, trimToLower } from '../../misc/functions';
 import { AppList } from '../../data/applicationData';
 import { compareVersions } from 'compare-versions';
+import { CompatibilitiesService } from '../../services/compatibilities/compatibilities.service';
+import { Compatibility } from '../../classes/Compatibility';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { dateSort, parseElapsed, trimToLower } from '../../misc/functions';
+import { environment } from 'src/environments/environments';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
 	templateUrl: 'home.page.html',
@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 })
 
 export class HomePageComponent implements OnInit {
-	Applications: Application[] = AppList;
+	applications: Application[] = AppList;
 
 	dataSource: MatTableDataSource<Application>;
 
@@ -32,6 +32,8 @@ export class HomePageComponent implements OnInit {
 
 	now: number = Date.now();
 
+	env = environment;
+
 	initialPageSize = 5;
 
 	public displayedColumns: string[] = ['name', 'version', 'wikiVersion', 'releaseCandidates', 'tags', 'features', 'updated', 'compatibilities'];
@@ -39,11 +41,14 @@ export class HomePageComponent implements OnInit {
 	@ViewChild('paginator') paginator!: MatPaginator;
 	@ViewChild(MatSort) sort!: MatSort;
 
-	constructor(private title: Title, private compatibilitiesService: CompatibilitiesService, private router: Router){
-		this.dataSource = new MatTableDataSource(this.Applications);
-		this.compatibleApps = this.compatibilitiesService.get();
+	constructor(private title: Title, compatibilityService: CompatibilitiesService, private router: Router){
 
-		this.Applications.forEach(app => {
+		this.dataSource = new MatTableDataSource(this.applications);
+
+		this.compatibleApps = compatibilityService.get();
+		console.log(`Homes time ${compatibilityService.time}`);
+
+		this.applications.forEach(app => {
 			try {
 				app.releaseCandidates.sort(compareVersions);
 				app.releaseCandidates.reverse();
@@ -52,7 +57,7 @@ export class HomePageComponent implements OnInit {
 				app.tags.reverse();
 
 			}catch(e){
-				console.log("Sorting failed for: "+app.name+', '+e);
+				console.log(`Sorting failed for: ${app.name}, ${e}`);
 			}
 
 			if(app.features){
@@ -64,7 +69,7 @@ export class HomePageComponent implements OnInit {
 					let last_commit_delta = this.now - last_commit_date.getTime();
 
 					// Flag app and features is they're old
-					if(last_commit_delta >= environment.branchAgeWarningMs){
+					if(last_commit_delta >= this.env.branchAgeWarningMs){
 						app['old'] = 1;
 						feature['old'] = 1;
 					}
@@ -87,7 +92,7 @@ export class HomePageComponent implements OnInit {
 
 			if(app['updated']){
 				let info_delta = this.now - app['updated'];
-				if(info_delta >= environment.oldInfoWarningDays * 86400000){
+				if(info_delta >= this.env.oldInfoWarningDays * 86400000){
 					app['old_info'] = 1;
 				}
 			}
@@ -101,7 +106,7 @@ export class HomePageComponent implements OnInit {
 
 	ngOnInit(){
 		this.title.setTitle("ST - Applications");
-		this.Applications.forEach((app) => {
+		this.applications.forEach((app) => {
 			this.updateDisplayedTests(0, app.features!, app.name!, app['pageSize']);
 		});
 		
@@ -110,13 +115,13 @@ export class HomePageComponent implements OnInit {
 
 	onPageChange(event: any, content: Feature[], release: string){
         this.updateDisplayedTests(event.pageIndex * event.pageSize, content, release, event.pageSize);
-		window.location.href = "#"+release;
+		window.location.href = `#${release}`;
     }
 
 	updateDisplayedTests(startIndex: number, content: Feature[], appName: string, selectedPageSize: number){
         if(!content?.length) return;
   
-        this.Applications.forEach((app) => {
+        this.applications.forEach((app) => {
 			if(app.name === appName){
 				app['displayedTests'] = content.slice(startIndex, startIndex + selectedPageSize);
 			}
@@ -130,7 +135,9 @@ export class HomePageComponent implements OnInit {
 					return trimToLower(item.name);
 				}
 				case 'features': {
-					return new Date(item.features![0].last_commit_date);
+					if(item.features?.length)
+						return new Date(item.features[0].last_commit_date);
+					return "";
 				}
 				default: {
 					return item[property];
@@ -153,6 +160,10 @@ export class HomePageComponent implements OnInit {
 	}
 
 	sortByDate(){
-		this.dataSource.data.sort((a: Application, b: Application) => dateSort(b.features![0].last_commit_date, a.features![0].last_commit_date));
+		this.dataSource.data.sort((a: Application, b: Application) => {
+			if(a.features?.length && b.features?.length)
+				return dateSort(b.features![0].last_commit_date, a.features![0].last_commit_date);
+			return 0;
+		});
 	}
 }

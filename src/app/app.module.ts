@@ -4,65 +4,71 @@ import { AppMaterialModule } from './app.material-module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { appRoutingModule } from './app.routing';
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDividerModule } from '@angular/material/divider';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { CompPageComponent } from './pages/comp/comp.page';
+import { DarkModeToggle } from './components/dark-mode-toggle/dark-mode-toggle.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomePageComponent } from './pages/home/home.page';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
-import { appRoutingModule } from './app.routing';
-import { AppComponent } from './app.component';
-import { HomePageComponent } from './pages/home/home.page';
-import { CompPageComponent } from './pages/comp/comp.page';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 import { ReleasePageComponent } from './pages/release/release.page';
-import { DarkModeToggle } from './components/dark-mode-toggle/dark-mode-toggle.component';
 import { StatusTrackerBadgeComponent } from './components/status-tracker-badge/status-tracker-badge.component';
-import { DialogComponent } from './components/dialog/dialog.component';
 import { SystemtestSummaryComponent } from './components/systemtest-summary/systemtest-summary.component';
+import { CompatibilitiesService } from './services/compatibilities/compatibilities.service';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		HomePageComponent,
+		CapitalizePipe,
 		CompPageComponent,
+		HomePageComponent,
 		ReleasePageComponent,
+		SystemtestSummaryComponent,
   		DarkModeToggle,
     	StatusTrackerBadgeComponent,
-     	DialogComponent,
-      SystemtestSummaryComponent
+     	DialogComponent
 	],
 	imports: [
+		AppMaterialModule,
 		appRoutingModule,
-		BrowserModule,
 		BrowserAnimationsModule,
+		BrowserModule,
 		FormsModule,
 		HttpClientModule,
-		MatNativeDateModule,
-		AppMaterialModule,
+		MatAutocompleteModule,
 		MatButtonModule,
-		MatTableModule,
-		MatExpansionModule,
-		MatDividerModule,
-		MatPaginatorModule,
 		MatCardModule,
 		MatChipsModule,
-		ReactiveFormsModule,
+		MatDividerModule,
+		MatExpansionModule,
+		MatIconModule,
+		MatNativeDateModule,
+		MatPaginatorModule,
 		MatSelectModule,
-		MatAutocompleteModule,
-		MatIconModule
+		MatTableModule,
+		ReactiveFormsModule
 	],
 	providers: [
-		Title
+		Title,
+		CompatibilitiesService
 	],
 	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}
 
 //platformBrowserDynamic().bootstrapModule(AppModule);

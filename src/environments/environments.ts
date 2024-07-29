@@ -1,5 +1,6 @@
 export const environment = {
 	baseURL: 'assets/',
 	branchAgeWarningMs: 3024000000,
-	oldInfoWarningDays: 7
+	oldInfoWarningDays: 7,
+	organization: 'gabor-kovac'
 };

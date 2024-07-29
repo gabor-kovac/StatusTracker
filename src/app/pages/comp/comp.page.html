@@ -1,4 +1,4 @@
-<div *ngIf="compatibleApps != [] && compatibleApps.length > 0; else appNotFound">
+<div *ngIf="compatibleApps!.length > 0; else appNotFound">
     <table class="table">
         <thead>
             <tr class="col">
@@ -6,15 +6,19 @@
                     <span class="ms-2 me-4 fw-medium">Application:</span>
                     <mat-form-field appearance="fill" class="mt-4 w-50">
                         <mat-select (selectionChange)="selectApp($event.value)" [(value)]="selectedAppName">
-                            <mat-option *ngFor="let app of uniqueApps" value="{{app.name}}">{{app.name}}</mat-option>
+                            <mat-option *ngFor="let app of uniqueApps" value="{{ app.name }}">{{ app.name }}</mat-option>
                         </mat-select>
                     </mat-form-field>
+                    <a *ngIf="this.app" class="ms-2 p-4 text-white fw-light shadow-sm bg-secondary bg-opacity-75" title="Open package in new tab" mat-stroked-button href="https://ghcr.io/{{ env.organization }}/{{ this.app }}" target="_blank">
+                        <span class="pe-3">Open package</span>
+					    <i class="bi bi-box2"></i>
+                    </a>
                 </th>
                 <th scope="col" class="justify-content-start align-items-center">
                     <span class="ms-2 me-4 fw-medium">Version:</span>
                     <mat-form-field appearance="fill" class="mt-4 w-50">
                         <mat-select (selectionChange)="selectVersion($event.value)" [(value)]="selectedAppVersion">
-                            <mat-option *ngFor="let version of appVersions" value="{{version}}">{{version}}</mat-option>
+                            <mat-option *ngFor="let version of appVersions" value="{{ version }}">{{ version }}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </th>
@@ -22,8 +26,8 @@
         </thead>
         <tbody>
             <tr class="col" *ngFor="let app of compatibleApps">
-                <td class="col ps-3"><a target="_blank" title="Open package in new tab" href="https://ghcr.io/gabor-kovac/{{app.name}}">{{app.name}}</a></td>
-                <td class="col ps-3">{{app.version}}</td>
+                <td class="col ps-3"><a target="_blank" title="Open package in new tab" href="https://ghcr.io/{{ env.organization }}/{{ app.name }}">{{ app.name }}</a></td>
+                <td class="col ps-3">{{ app.version }}</td>
             </tr>
         </tbody>
     </table>
