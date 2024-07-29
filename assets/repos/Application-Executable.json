@@ -4,7 +4,7 @@
 "updated": 1712672299133,
 "wikiVersion": null,
 "releaseCandidates": [],
-"tags": ["su-tag","tes2","test","test-system-test-fixes","v0.0.1"],
+"tags": ["test-tag","test-tag2"],
 "features": [
 {
 "branch": "system-test",

@@ -77,6 +77,46 @@
         "pull_requests": []
       },
       {
+        "branch": "can-fix2",
+        "last_commit_sha": "db9bba8e5b43a2c7a4d6aaec6a48666d9e41512d",
+        "last_commit_message": "AssemblyVersion increased to: 2.11.5",
+        "last_commit_date": "2024-06-06T12:44:22Z",
+        "last_commit_author": "dev007",
+        "last_commit_scan_result": "FAILED",
+        "last_commit_scan_date": "2024-06-06T12:46:58Z",
+        "pull_requests": []
+      },
+      {
+        "branch": "can-fix3",
+        "last_commit_sha": "db9bba8e5b43a2c7a4d6aaec6a48666d9e41512d",
+        "last_commit_message": "AssemblyVersion increased to: 2.11.5",
+        "last_commit_date": "2024-06-06T12:44:22Z",
+        "last_commit_author": "dev007",
+        "last_commit_scan_result": "FAILED",
+        "last_commit_scan_date": "2024-06-06T12:46:58Z",
+        "pull_requests": []
+      },
+      {
+        "branch": "can-fix4",
+        "last_commit_sha": "db9bba8e5b43a2c7a4d6aaec6a48666d9e41512d",
+        "last_commit_message": "AssemblyVersion increased to: 2.11.5",
+        "last_commit_date": "2024-06-06T12:44:22Z",
+        "last_commit_author": "dev007",
+        "last_commit_scan_result": "FAILED",
+        "last_commit_scan_date": "2024-06-06T12:46:58Z",
+        "pull_requests": []
+      },
+      {
+        "branch": "can-fix5",
+        "last_commit_sha": "db9bba8e5b43a2c7a4d6aaec6a48666d9e41512d",
+        "last_commit_message": "AssemblyVersion increased to: 2.11.5",
+        "last_commit_date": "2024-06-06T12:44:22Z",
+        "last_commit_author": "dev007",
+        "last_commit_scan_result": "FAILED",
+        "last_commit_scan_date": "2024-06-06T12:46:58Z",
+        "pull_requests": []
+      },
+      {
         "branch": "static-consumer",
         "last_commit_sha": "f8824a78cee45d7ff606f4cf80038c1b9e413f3b",
         "last_commit_message": "AssemblyVersion increased to: 2.11.4",
@@ -102,11 +142,8 @@
     "wikiVersion": null,
     "releaseCandidates": [],
     "tags": [
-      "su-tag",
-      "tes2",
-      "test",
-      "test-system-test-fixes",
-      "v0.0.1"
+      "test-tag",
+      "test-tag2"
     ],
     "features": [
       {
