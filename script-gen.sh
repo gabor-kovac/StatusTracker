@@ -1,6 +1,5 @@
 #!/bin/bash
 # Generates applicationData.ts
-echo "Starting AppList generator" >&2
 
 REPOS=$(ls src/assets/repos)
 

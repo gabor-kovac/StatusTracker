@@ -1,6 +1,5 @@
 #!/bin/bash
 # Generates releaseData.ts
-echo "Starting ReleaseList generator" >&2
 
 RELEASES=$(ls src/assets/releases)
 
