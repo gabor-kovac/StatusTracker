@@ -4,9 +4,10 @@ import * as sonarExtra from "../../../assets/sonarExtra.json";
 export const DIALOG_CONTAINER = "dialogContainer";
 
 @Component({
-	selector: "app-dialog",
-	templateUrl: "./dialog.component.html",
-	styleUrls: ["./dialog.component.scss"],
+    selector: "app-dialog",
+    templateUrl: "./dialog.component.html",
+    styleUrls: ["./dialog.component.scss"],
+    standalone: false
 })
 export class DialogComponent {
 	dialogContainer: HTMLElement | undefined;

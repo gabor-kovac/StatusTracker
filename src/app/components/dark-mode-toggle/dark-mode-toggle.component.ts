@@ -3,8 +3,9 @@ import { DarkModeService } from "src/app/services/dark-mode/dark-mode.service";
 import { Observable } from "rxjs";
 
 @Component({
-	selector: "dark-mode-toggle",
-	templateUrl: "./dark-mode-toggle.component.html",
+    selector: "dark-mode-toggle",
+    templateUrl: "./dark-mode-toggle.component.html",
+    standalone: false
 })
 export class DarkModeToggle {
 	darkMode$: Observable<boolean> = this.darkModeService.darkMode$;

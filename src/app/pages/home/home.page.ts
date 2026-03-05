@@ -13,8 +13,9 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-	templateUrl: 'home.page.html',
-	styleUrls: ['home.page.scss']
+    templateUrl: 'home.page.html',
+    styleUrls: ['home.page.scss'],
+    standalone: false
 })
 
 export class HomePageComponent implements OnInit {

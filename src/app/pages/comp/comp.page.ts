@@ -10,7 +10,8 @@ import { stringSort } from "src/app/misc/functions";
 
 @Component({
     templateUrl: 'comp.page.html',
-    styleUrls: ['comp.page.scss']
+    styleUrls: ['comp.page.scss'],
+    standalone: false
 })
 
 export class CompPageComponent implements OnInit{

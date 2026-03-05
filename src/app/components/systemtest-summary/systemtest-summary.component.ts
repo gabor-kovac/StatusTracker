@@ -2,10 +2,11 @@ import { Component } from "@angular/core";
 import summaryFile from "../../../assets/systemtestSummary.json";
 
 @Component({
-	selector: "systemtest-summary",
-	templateUrl: "./systemtest-summary.component.html",
-	styleUrls: ["./systemtest-summary.component.scss"],
-	host: {"class": "flex-grow-1"}
+    selector: "systemtest-summary",
+    templateUrl: "./systemtest-summary.component.html",
+    styleUrls: ["./systemtest-summary.component.scss"],
+    host: { "class": "flex-grow-1" },
+    standalone: false
 })
 export class SystemtestSummaryComponent {
 	failed: boolean;

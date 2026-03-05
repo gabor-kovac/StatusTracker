@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { AppMaterialModule } from './app.material-module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { appRoutingModule } from './app.routing';
@@ -29,44 +29,38 @@ import { StatusTrackerBadgeComponent } from './components/status-tracker-badge/s
 import { SystemtestSummaryComponent } from './components/systemtest-summary/systemtest-summary.component';
 import { CompatibilitiesService } from './services/compatibilities/compatibilities.service';
 
-@NgModule({
-	declarations: [
-		AppComponent,
-		CapitalizePipe,
-		CompPageComponent,
-		HomePageComponent,
-		ReleasePageComponent,
-		SystemtestSummaryComponent,
-  		DarkModeToggle,
-    	StatusTrackerBadgeComponent,
-     	DialogComponent
-	],
-	imports: [
-		AppMaterialModule,
-		appRoutingModule,
-		BrowserAnimationsModule,
-		BrowserModule,
-		FormsModule,
-		HttpClientModule,
-		MatAutocompleteModule,
-		MatButtonModule,
-		MatCardModule,
-		MatChipsModule,
-		MatDividerModule,
-		MatExpansionModule,
-		MatIconModule,
-		MatNativeDateModule,
-		MatPaginatorModule,
-		MatSelectModule,
-		MatTableModule,
-		ReactiveFormsModule
-	],
-	providers: [
-		Title,
-		CompatibilitiesService
-	],
-	bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        CapitalizePipe,
+        CompPageComponent,
+        HomePageComponent,
+        ReleasePageComponent,
+        SystemtestSummaryComponent,
+        DarkModeToggle,
+        StatusTrackerBadgeComponent,
+        DialogComponent
+    ],
+    bootstrap: [AppComponent], imports: [AppMaterialModule,
+        appRoutingModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        FormsModule,
+        MatAutocompleteModule,
+        MatButtonModule,
+        MatCardModule,
+        MatChipsModule,
+        MatDividerModule,
+        MatExpansionModule,
+        MatIconModule,
+        MatNativeDateModule,
+        MatPaginatorModule,
+        MatSelectModule,
+        MatTableModule,
+        ReactiveFormsModule], providers: [
+        Title,
+        CompatibilitiesService,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { 
 
 }

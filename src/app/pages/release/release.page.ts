@@ -7,7 +7,8 @@ import { dateSort } from "src/app/misc/functions";
 
 @Component({
     templateUrl: 'release.page.html',
-    styleUrls: ['release.page.scss']
+    styleUrls: ['release.page.scss'],
+    standalone: false
 })
 
 export class ReleasePageComponent implements OnInit{

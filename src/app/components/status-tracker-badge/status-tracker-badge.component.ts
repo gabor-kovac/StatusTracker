@@ -2,10 +2,11 @@ import { Component } from "@angular/core";
 import packageJson from 'package.json';
 
 @Component({
-  selector: "status-tracker-badge",
-  templateUrl: "./status-tracker-badge.component.html",
-  styleUrls: ["./status-tracker-badge.component.scss"],
-  host: { '(click)': 'onClick()' }
+    selector: "status-tracker-badge",
+    templateUrl: "./status-tracker-badge.component.html",
+    styleUrls: ["./status-tracker-badge.component.scss"],
+    host: { '(click)': 'onClick()' },
+    standalone: false
 })
 export class StatusTrackerBadgeComponent {
 	st_version: string = "0.0.0";
