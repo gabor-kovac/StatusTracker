@@ -6,7 +6,7 @@
     "start": "ng serve",
     "pre-build": "bash pre-build.sh",
     "build": "ng build --configuration production --output-path docs --base-href https://gabor-kovac.github.io/StatusTracker/",
-    "post-build": "cp docs/browser/index.html docs/browser/404.html",
+    "post-build": "mv docs/browser/* docs/; cp docs/index.html docs/404.html ; rmdir docs/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false --browsers=ChromeHeadless"
   },

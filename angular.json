@@ -18,9 +18,9 @@
 					"builder": "@angular/build:application",
 					"options": {
 						"outputPath": {
-              "base": "dist/StatusTracker"
-            },
-            "index": "src/index.html",
+							"base": "dist/StatusTracker"
+						},
+						"index": "src/index.html",
 						"polyfills": [
 							"zone.js"
 						],
@@ -34,10 +34,8 @@
 							"@angular/material/prebuilt-themes/deeppurple-amber.css",
 							"src/styles.scss"
 						],
-						"scripts": [
-							
-            ],
-            "browser": "src/main.ts"
+						"scripts": [],
+						"browser": "src/main.ts"
 					},
 					"configurations": {
 						"production": {
@@ -55,8 +53,8 @@
 							],
 							"outputHashing": "all"
 						},
-            "development": {
-              "optimization": false,
+						"development": {
+							"optimization": false,
 							"extractLicenses": false,
 							"sourceMap": true,
 							"namedChunks": true
@@ -67,19 +65,19 @@
 				"serve": {
 					"builder": "@angular/build:dev-server",
 					"configurations": {
-            "production": {
-              "buildTarget": "StatusTracker:build:production"
+						"production": {
+							"buildTarget": "StatusTracker:build:production"
 						},
-            "development": {
-              "buildTarget": "StatusTracker:build:development"
+						"development": {
+							"buildTarget": "StatusTracker:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
 				},
 				"extract-i18n": {
 					"builder": "@angular/build:extract-i18n",
-          "options": {
-            "buildTarget": "StatusTracker:build"
+					"options": {
+						"buildTarget": "StatusTracker:build"
 					}
 				},
 				"test": {
@@ -107,31 +105,31 @@
 	},
 	"cli": {
 		"analytics": false
-  },
-  "schematics": {
-    "@schematics/angular:component": {
-      "type": "component"
-    },
-    "@schematics/angular:directive": {
-      "type": "directive"
-    },
-    "@schematics/angular:service": {
-      "type": "service"
-    },
-    "@schematics/angular:guard": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:interceptor": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:module": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:pipe": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:resolver": {
-      "typeSeparator": "."
-    }
-  }
+	},
+	"schematics": {
+		"@schematics/angular:component": {
+			"type": "component"
+		},
+		"@schematics/angular:directive": {
+			"type": "directive"
+		},
+		"@schematics/angular:service": {
+			"type": "service"
+		},
+		"@schematics/angular:guard": {
+			"typeSeparator": "."
+		},
+		"@schematics/angular:interceptor": {
+			"typeSeparator": "."
+		},
+		"@schematics/angular:module": {
+			"typeSeparator": "."
+		},
+		"@schematics/angular:pipe": {
+			"typeSeparator": "."
+		},
+		"@schematics/angular:resolver": {
+			"typeSeparator": "."
+		}
+	}
 }
