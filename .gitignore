@@ -30,7 +30,6 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
@@ -43,11 +42,9 @@ testem.log
 Thumbs.db
 .vscode/launch.json
 .vscode/launch.json
-src/assets/applicationDataFile.json
-src/assets/compatibilitiesDataFile.json
-src/app/misc/applicationData.ts
+compatibilityDataFile.json
+applicationDataFile.json
 
 docs
-applicationData.ts
-releaseData.ts
-.angular
+ApplicationData.ts
+ReleaseData.ts

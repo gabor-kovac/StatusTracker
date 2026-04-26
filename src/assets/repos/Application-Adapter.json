@@ -1,7 +1,7 @@
 {
     "name": "Application-Adapter",
-    "version": null,
-    "updated": 1717678137694,
+    "version": "0.0.0",
+    "updated": 1777235074085,
     "wikiVersion": "2.5.0",
     "releaseCandidates": [
         "1.1.0",

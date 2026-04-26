@@ -20,7 +20,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
 
       - name: Install tools
@@ -28,16 +28,6 @@ jobs:
 
       - name: Install npm dependencies
         run: npm install
-
-      # - name: Run scheduled Sonar check
-      #   if: ${{ github.event_name == 'schedule' }}
-      #   run: |
-      #     chmod +x ./sonarcheck.sh
-      #     chmod +x ./gh-get-json.sh
-      #     bash ./sonarcheck.sh
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #     GITHUB_TOKEN: ${{ secrets.CR_PAT }}
         
       - name: Run pre build
         run: npm run pre-build
