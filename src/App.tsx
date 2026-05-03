@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Compatibility from "./Pages/Compatibility";
 import Releases from "./Pages/Releases";

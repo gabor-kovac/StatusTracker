@@ -128,3 +128,7 @@
     @apply font-sans;
     }
 }
+
+td, th {
+  text-align: center;
+}

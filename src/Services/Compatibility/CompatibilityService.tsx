@@ -4,7 +4,7 @@ import compatibilityDataFile from "../../Assets/compatibilityDataFile.json";
 
 export class CompatibilitiesService {
 
-	private compatibilities: Object[] = [];
+	private compatibilities: object[] = [];
 	private uniqueApps: Compatibility[] = [];
 
 	public time: string;

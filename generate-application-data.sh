@@ -4,7 +4,7 @@
 REPOS=$(ls src/Assets/Repos)
 
 echo "import type { Application } from '../Types/Application';"
-echo "var AppList: Application[] = [];"
+echo "const AppList: Application[] = [];"
 
 if [[ -z "$REPOS" ]]; then
     echo "No repo files found" >&2

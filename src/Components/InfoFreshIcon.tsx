@@ -11,7 +11,7 @@ enum Freshness {
     Unknown = "unknown"
 }
 
-function howFresh(timestamp?: number): Freshness {
+function howFresh(timestamp?: number | null): Freshness {
     if(timestamp === undefined || timestamp === null) {
         return Freshness.Unknown;
     }
@@ -27,9 +27,9 @@ function howFresh(timestamp?: number): Freshness {
     }
 }
 
-export function InfoFreshIcon({ timestamp }: { timestamp?: number }) {
+export function InfoFreshIcon({ timestamp }: { timestamp?: number | null }) {
 
-    const dateParsed = new Date(timestamp).toDateString();
+    const dateParsed = new Date(timestamp!).toDateString();
     const freshness = howFresh(timestamp);
 
     return (
@@ -37,7 +37,7 @@ export function InfoFreshIcon({ timestamp }: { timestamp?: number }) {
             <TooltipTrigger>
                 {freshness === Freshness.Fresh && <ClockCheck className="text-green-500" /> }
                 {freshness === Freshness.Stale && <ClockFading className="text-orange-500" />}
-                {freshness === Freshness.Unknown && <CircleQuestionMark className="text-red-500" />}
+                {freshness === Freshness.Unknown && <CircleQuestionMark className="text-cyan-500" />}
             </TooltipTrigger>
             <TooltipContent>
                 {freshness === Freshness.Fresh && <p>Info is fresh: {dateParsed} </p>}

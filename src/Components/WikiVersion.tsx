@@ -8,8 +8,8 @@ enum VersionStatus {
 }
 
 type WikiVersionProps = {
-    releaseVersion?: string;
-    wikiVersion?: string;
+    releaseVersion?: string | null;
+    wikiVersion?: string | null;
 }
 
 export default function WikiVersion({ releaseVersion, wikiVersion }: WikiVersionProps) {

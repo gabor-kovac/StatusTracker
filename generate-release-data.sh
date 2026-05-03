@@ -4,7 +4,7 @@
 RELEASES=$(ls src/Assets/Releases)
 
 echo "import type { ApplicationRelease, Release, Test } from '../Types/Release'"
-echo "var ReleaseList: ApplicationRelease[] = [];"
+echo "const ReleaseList: ApplicationRelease[] = [];"
 
 if [[ -z "$RELEASES" ]]; then
     echo "No test files found" >&2
@@ -13,7 +13,7 @@ else
     for RELEASE in $RELEASES
     do
         echo "import Release$i from './Releases/$RELEASE'"
-        echo "var R$i: Release[] = Release$i;"
+        echo "const R$i: Release[] = Release$i;"
         echo "ReleaseList.push({\"applicationName\": \"${RELEASE%.json}\", \"releases\": R$i});"
         i=$(( i + 1 ))
     done

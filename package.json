@@ -1,6 +1,6 @@
 {
-  "name": "StatusTracker",
-  "version": "2.0.0",
+  "name": "status-tracker",
+  "version": "2.0.3",
   "private": true,
   "type": "module",
   "scripts": {

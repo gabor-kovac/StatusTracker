@@ -11,6 +11,6 @@ export interface Release {
 
 export interface Test {
     testFile: string;
-    summary: Object;
+    summary: object;
     dateTime?: Date;
 }

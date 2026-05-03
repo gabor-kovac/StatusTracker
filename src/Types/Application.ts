@@ -1,7 +1,7 @@
 export interface Application {
 	name: string;
 	version: string | null;
-	updated?: number;
+	updated?: number | null;
 	wikiVersion: string | null;
 	releaseCandidates: string[];
 	tags: string[];
