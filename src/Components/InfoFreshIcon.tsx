@@ -35,9 +35,9 @@ export function InfoFreshIcon({ timestamp }: { timestamp?: number | null }) {
     return (
         <Tooltip>
             <TooltipTrigger>
-                {freshness === Freshness.Fresh && <ClockCheck className="text-green-500" /> }
-                {freshness === Freshness.Stale && <ClockFading className="text-orange-500" />}
-                {freshness === Freshness.Unknown && <CircleQuestionMark className="text-cyan-500" />}
+                {freshness === Freshness.Fresh && <ClockCheck size="18" className="text-green-500" /> }
+                {freshness === Freshness.Stale && <ClockFading size="18" className="text-orange-500" />}
+                {freshness === Freshness.Unknown && <CircleQuestionMark size="18" className="text-cyan-500" />}
             </TooltipTrigger>
             <TooltipContent>
                 {freshness === Freshness.Fresh && <p>Info is fresh: {dateParsed} </p>}

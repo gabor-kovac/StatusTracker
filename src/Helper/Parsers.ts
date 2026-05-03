@@ -1,7 +1,7 @@
 export function stringSort(a: string, b: string): number {
     const A = a.trim().toLocaleLowerCase();
     const B = b.trim().toLocaleLowerCase();
-    
+
     if(A < B) return -1;
     if(A > B) return 1;
 
@@ -30,6 +30,8 @@ export function trimToLower(str: string | null){
 export function parseElapsed(delta: number): string {
 	let seconds = Math.floor(delta / 1000);
 
+	const years = Math.floor(seconds / 31536000);
+	seconds -= years*31536000;
 	const weeks = Math.floor(seconds / 604800);
 	seconds -= weeks*604800;
 	const days = Math.floor(seconds / 86400);
@@ -38,10 +40,15 @@ export function parseElapsed(delta: number): string {
 	seconds -= hours*3600;
 	const minutes = Math.floor(seconds / 60);
 	seconds -= minutes*60;
-	
+
 	let result: string = "";
-  
+
+	if (years > 0) {
+		result += `${years} year${years > 1 ? "s" : ""}`;
+	}
+
 	if (weeks > 0) {
+		if (result !== "") result += ", ";
 		result += `${weeks} week${weeks > 1 ? "s" : ""}`;
 	}
 
@@ -63,7 +70,7 @@ export function parseElapsed(delta: number): string {
 	if (result === "") {
 		result = "less than a minute";
 	}
-	
+
 	return result;
 }
 

@@ -14,6 +14,7 @@ import { SelectScrollable, type SelectItems } from "@/Components/SelectScrollabl
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/Components/ui/input-group";
 import { List, Search, PanelTopOpen } from "lucide-react";
 import { InfoFreshIcon } from "@/Components/InfoFreshIcon";
+import FeatureList from "@/Components/FeatureList";
 import WikiVersion from "@/Components/WikiVersion";
 import type { Application } from '../Types/Application';
 
@@ -37,14 +38,16 @@ export default function Home() {
         <Table>
             <TableHeader className="border-b-3 border-grey-900">
                 <TableRow>
-                    <div className="flex flex-col p-3">
-                        <InputGroup>
-                            <InputGroupInput type="search" placeholder="Search application" onChange={(e) => setSearchFilter(e.target.value.toLowerCase())}></InputGroupInput>
-                            <InputGroupAddon align="inline-start">
-                                <Search />
-                            </InputGroupAddon>
-                        </InputGroup>
-                    </div>
+                    <TableHead>
+                        <div className="flex flex-col p-3">
+                            <InputGroup>
+                                <InputGroupInput type="search" placeholder="Search application" onChange={(e) => setSearchFilter(e.target.value.toLowerCase())}></InputGroupInput>
+                                <InputGroupAddon align="inline-start">
+                                    <Search />
+                                </InputGroupAddon>
+                            </InputGroup>
+                        </div>
+                    </TableHead>
                     <TableHead colSpan={6}></TableHead>
                     <TableHead>
                         <Button size="lg">
@@ -95,21 +98,12 @@ export default function Home() {
                         />
                     </TableCell>
                     <TableCell>
-                        {
-                        app.features?.length ?
-                        <Button>
-                            Open features
-                            <PanelTopOpen data-icon="inline-end" />
-                        </Button>
-                        :
-                        <span>-</span>
-                        }
+                        <FeatureList features={app.features}></FeatureList>
                     </TableCell>
                     <TableCell>
                         <InfoFreshIcon timestamp={app.updated} />
                     </TableCell>
                     <TableCell>
-                        
                     </TableCell>
                 </TableRow>
             ))}
