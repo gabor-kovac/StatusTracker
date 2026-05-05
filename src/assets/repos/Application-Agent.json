@@ -1,8 +1,8 @@
 {
 "name": "Application-Agent",
-"version": null,
+"version": "2.5.0",
 "updated": 1720608297184,
-"wikiVersion": "0.0.3",
+"wikiVersion": "2.5.0",
 "releaseCandidates": [],
 "tags": [],
 "features": [
