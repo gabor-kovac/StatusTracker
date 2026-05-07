@@ -22,6 +22,23 @@ export function trimToLower(str: string | null){
 	return str?.trim().toLocaleLowerCase();
 }
 
+export function sinceDate(dateStr: string): string {
+	let result = "";
+	if (dateStr != null) {
+		const currentTime = new Date().getTime();
+		result = parseElapsed(currentTime - new Date(dateStr).getTime());
+	}
+	return result;
+}
+
+export function elapsedMoreThan(dateStr: string, days: number): boolean {
+	const today = new Date();
+	const targetDate = new Date(dateStr);
+	const diffTime = Math.abs(today.getTime() - targetDate.getTime());
+	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+	return diffDays > days;
+}
+
 /**
  * Calculates and parses string of elapsed time from millisecond value
  * @param delta Time in milliseconds
@@ -73,10 +90,3 @@ export function parseElapsed(delta: number): string {
 
 	return result;
 }
-
-// Object.defineProperty(String.prototype, 'capitalize', {
-// 	value: function() {
-// 		return this.charAt(0).toUpperCase() + this.slice(1).toLowerCase();
-// 	},
-// 	enumerable: false
-// });
