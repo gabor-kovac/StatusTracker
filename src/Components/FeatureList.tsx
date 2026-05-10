@@ -110,7 +110,7 @@ export default function FeatureList({ features }: { features: Feature[] | undefi
                                     <div className="flex flex-row items-center gap-1.5"><GitPullRequest color="#0765b1" size="20" /><b>No open pull requests</b></div>
                                     :
                                     <>
-                                    <div className="flex flex-row items-center gap-1.5"><GitPullRequest color="#0765b1" size="20" /><b>Open pull requests</b>{feature.pull_requests.length}</div>
+                                    <div className="flex flex-row items-center gap-1.5"><GitPullRequest color="#0765b1" size="20" /><b>Open pull requests</b>{feature.pull_requests!.length}</div>
                                     <div className="flex flex-col border-1 rounded-lg mt-2 divide-y px-2 py-1">
                                         {
                                         feature.pull_requests != null && feature.pull_requests?.map((pullRequest: PullRequest, index: number) => (
