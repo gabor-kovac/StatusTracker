@@ -1,4 +1,4 @@
-export const environment = {
+export const globalConfig = {
 	baseURL: 'assets/',
 	branchAgeWarningMs: 3024000000,
 	oldInfoWarningDays: 7,

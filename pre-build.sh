@@ -1,7 +1,11 @@
 #!/bin/bash
 # Launches pre build scripts
-bash ./jsonJoiner.sh
+
+echo "Starting JSON joiner"
+bash ./json-joiner.sh
+
 echo "Starting AppList generator"
-bash ./script-gen.sh > src/app/data/applicationData.ts && echo "Generated applicationData.ts"
+bash ./generate-application-data.sh > src/Assets/ApplicationData.ts && echo "Generated ApplicationData.ts"
+
 echo "Starting ReleaseList generator"
-bash ./release-gen.sh > src/app/data/releaseData.ts && echo "Generated releaseData.ts"
+bash ./generate-release-data.sh > src/Assets/ReleaseData.ts && echo "Generated ReleaseData.ts"

@@ -1,7 +1,7 @@
 {
     "name": "Application-Adapter",
-    "version": null,
-    "updated": 1717678137694,
+    "version": "0.0.0",
+    "updated": 1777235074085,
     "wikiVersion": "2.5.0",
     "releaseCandidates": [
         "1.1.0",
@@ -69,11 +69,18 @@
             "branch": "can-fix",
             "last_commit_sha": "db9bba8e5b43a2c7a4d6aaec6a48666d9e41512d",
             "last_commit_message": "AssemblyVersion increased to: 2.11.5",
-            "last_commit_date": "2024-06-06T12:44:22Z",
+            "last_commit_date": "2026-05-01T12:44:22Z",
             "last_commit_author": "dev007",
             "last_commit_scan_result": "FAILED",
-            "last_commit_scan_date": "2024-06-06T12:46:58Z",
-            "pull_requests": []
+            "last_commit_scan_date": "2026-05-01T12:46:58Z",
+            "pull_requests": [
+                {
+                    "pr_number": 123,
+                    "pr_title": "Fix for issue #456",
+                    "pr_author": {"login": "dev007"},
+                    "created_at": "2026-05-01T13:00:00Z"
+                }
+            ]
         },
         {
             "branch": "can-fix2",
