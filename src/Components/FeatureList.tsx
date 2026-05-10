@@ -49,9 +49,9 @@ function checkFeatures(features: Feature[]): boolean {
     return hasOldFeature || hasOldCommit;
 }
 
-export default function FeatureList({ features }: { features: Feature[] | null }) {
+export default function FeatureList({ features }: { features: Feature[] | undefined }) {
 
-    let lastCommitedFeature: Feature | null = null;
+    let lastCommitedFeature: Feature | undefined = undefined;
 
     if (features != null) {
         lastCommitedFeature = features.sort((a, b) => dateSort(b.last_commit_date, a.last_commit_date)).at(0);
