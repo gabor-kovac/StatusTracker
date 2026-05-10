@@ -53,8 +53,8 @@ export default function FeatureList({ features }: { features: Feature[] | undefi
 
     let lastCommitedFeature: Feature | undefined = undefined;
 
-    if (features != null) {
-        lastCommitedFeature = features.sort((a, b) => dateSort(b.last_commit_date, a.last_commit_date)).at(0);
+    if (features != null && features.length > 0) {
+        lastCommitedFeature = [...features].sort((a, b) => dateSort(b.last_commit_date, a.last_commit_date)).at(0);
     }
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -74,7 +74,9 @@ export default function FeatureList({ features }: { features: Feature[] | undefi
                         checkFeatures(features) &&
                         <CircleAlert size="16" className="text-orange-500 mr-1"></CircleAlert>
                         }
-                        <span className="flex flex-grow-1 mx-1">{lastCommitedFeature.branch} - {sinceDate(lastCommitedFeature.last_commit_date)} ago</span>
+                        <span className="flex flex-grow-1 mx-1">
+                            {lastCommitedFeature ? `${lastCommitedFeature.branch} - ${sinceDate(lastCommitedFeature.last_commit_date)} ago` : "-"}
+                        </span>
                         <ChevronDown data-icon="inline-end" />
                     </div>
                 </Button>
@@ -104,18 +106,18 @@ export default function FeatureList({ features }: { features: Feature[] | undefi
                                     <div className="flex flex-row items-center gap-1.5"><CircleUserRound color="#198754" size="20" /><b>Last commit author</b>{feature.last_commit_author}</div>
                                     <div className="flex flex-row items-center gap-1.5"><Clock color="#0795b1" size="20" /><b>Last commited</b>{sinceDate(feature.last_commit_date)} ago</div>
                                     {
-                                    feature.pull_requests?.length === 0 ?
+                                    feature.pull_requests != null && feature.pull_requests.length === 0 ?
                                     <div className="flex flex-row items-center gap-1.5"><GitPullRequest color="#0765b1" size="20" /><b>No open pull requests</b></div>
                                     :
                                     <>
-                                    <div className="flex flex-row items-center gap-1.5"><GitPullRequest color="#0765b1" size="20" /><b>Open pull requests</b>{feature.pull_requests.length}</div>
+                                    <div className="flex flex-row items-center gap-1.5"><GitPullRequest color="#0765b1" size="20" /><b>Open pull requests</b>{feature.pull_requests!.length}</div>
                                     <div className="flex flex-col border-1 rounded-lg mt-2 divide-y px-2 py-1">
                                         {
-                                        feature.pull_requests.map((pullRequest: PullRequest, index: number) => (
+                                        feature.pull_requests != null && feature.pull_requests?.map((pullRequest: PullRequest, index: number) => (
                                         <div key={index+"_pr"} className="flex flex-row items-center justify-between">
                                             <div className="flex flex-col p-1">
                                                 <a href={repoUrl+"/pull/"+pullRequest.pr_number} target="_blank">#{pullRequest.pr_number} - {pullRequest.pr_title}</a>
-                                                <span>created {sinceDate(pullRequest.created_at)} ago by {pullRequest.pr_author.login}</span>
+                                                <span>created {sinceDate(pullRequest.created_at)} ago by {pullRequest.pr_author!.login}</span>
                                             </div>
                                             {
                                             elapsedMoreThan(pullRequest.created_at, WARN_COMMIT_AGE_DAYS) && 
