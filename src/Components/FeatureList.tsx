@@ -91,10 +91,11 @@ export default function FeatureList({ features }: { features: Feature[] | null }
                                 <AccordionTrigger className="gap-0 items-center">
                                     {feature.branch}
                                     {
-                                    elapsedMoreThan(feature.last_commit_date, WARN_FEATURE_AGE_DAYS) && 
+                                    (elapsedMoreThan(feature.last_commit_date, WARN_FEATURE_AGE_DAYS) || 
+                                    feature.pull_requests?.some(pr => elapsedMoreThan(pr.created_at, WARN_COMMIT_AGE_DAYS))) &&
                                     <>
                                     <div className="flex-1"></div>
-                                    <Clock color="#ffa600" size="19" className=" mr-2" />
+                                    <Clock color="#ff6900" size="19" className=" mr-2" />
                                     </>
                                     }
                                 </AccordionTrigger>
@@ -110,16 +111,16 @@ export default function FeatureList({ features }: { features: Feature[] | null }
                                     <div className="flex flex-row items-center gap-1.5"><GitPullRequest color="#0765b1" size="20" /><b>Open pull requests</b>{feature.pull_requests.length}</div>
                                     <div className="flex flex-col border-1 rounded-lg mt-2 divide-y px-2 py-1">
                                         {
-                                        feature.pull_requests.map((pullRequest: PullRequest) => (
-                                        <div className="flex flex-row items-center justify-between">
-                                        <div className="flex flex-col p-1">
-                                            <a href={repoUrl+"/pull/"+pullRequest.pr_number} target="_blank">#{pullRequest.pr_number} - {pullRequest.pr_title}</a>
-                                            <span>created {sinceDate(pullRequest.created_at)} ago by {pullRequest.pr_author.login}</span>
-                                        </div>
-                                        {
-                                        elapsedMoreThan(pullRequest.created_at, WARN_COMMIT_AGE_DAYS) && 
-                                        <Clock color="#ffa600" size="19" className="mr-2" />
-                                        }
+                                        feature.pull_requests.map((pullRequest: PullRequest, index: number) => (
+                                        <div key={index+"_pr"} className="flex flex-row items-center justify-between">
+                                            <div className="flex flex-col p-1">
+                                                <a href={repoUrl+"/pull/"+pullRequest.pr_number} target="_blank">#{pullRequest.pr_number} - {pullRequest.pr_title}</a>
+                                                <span>created {sinceDate(pullRequest.created_at)} ago by {pullRequest.pr_author.login}</span>
+                                            </div>
+                                            {
+                                            elapsedMoreThan(pullRequest.created_at, WARN_COMMIT_AGE_DAYS) && 
+                                            <Clock color="#ff6900" size="19" className="mr-2" />
+                                            }
                                         </div>
                                         ))}
                                     </div>
@@ -132,11 +133,14 @@ export default function FeatureList({ features }: { features: Feature[] | null }
                     </CardContent>
                 </Card>
                 <DialogFooter>
+                    {
+                    totalPages > 1 &&
                     <Paginator
                         currentPage={currentPage}
                         totalPages={totalPages}
                         onPageChange={(pageNumber) => setCurrentPage(pageNumber)}
                         showPreviousNext />
+                    }
                     <DialogClose render={<Button variant="outline">Close</Button>} />
                 </DialogFooter>
             </DialogContent>

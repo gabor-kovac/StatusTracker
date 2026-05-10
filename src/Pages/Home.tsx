@@ -12,7 +12,7 @@ import {
 } from "@/Components/ui/table";
 import { SelectScrollable, type SelectItems } from "@/Components/SelectScrollable";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/Components/ui/input-group";
-import { List, Search, PanelTopOpen } from "lucide-react";
+import { List, Search } from "lucide-react";
 import { InfoFreshIcon } from "@/Components/InfoFreshIcon";
 import FeatureList from "@/Components/FeatureList";
 import WikiVersion from "@/Components/WikiVersion";
@@ -25,9 +25,7 @@ export default function Home() {
 
     useEffect(() => {
         if (searchFilter !== "") {
-            console.log("Search filter:", searchFilter);
             let filteredApps = AppList.filter((app: Application) => app.name.toLowerCase().includes(searchFilter));
-            console.log(filteredApps);
             setApplications(filteredApps);
         } else {
             setApplications(AppList);

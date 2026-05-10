@@ -5,6 +5,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/Components/ui/select"
+import { useState } from "react"
 
 export type SelectItems = {
     label: string;
@@ -12,9 +13,16 @@ export type SelectItems = {
 }
 
 export function SelectScrollable({ items, onSelect }: { items: SelectItems[], onSelect?: (value: string | null) => void }) {
+    const [selected, setSelected] = useState<string | null>(items.at(0)?.value ?? null);
+
+    const handleChange = (value: string | null) => {
+        setSelected(value);
+        onSelect?.(value);
+    };
+
     return (
         items.length > 0 ?
-        <Select items={items} onValueChange={onSelect} defaultValue={items.at(0).value}>
+        <Select value={selected} onValueChange={handleChange}>
             <SelectTrigger className="w-full max-w-64">
                 <SelectValue />
             </SelectTrigger>
