@@ -30,13 +30,13 @@ export default function Paginator({
             <PaginationContent>
                 {showPreviousNext && totalPages &&
                 <PaginationItem>
-                    <PaginationPrevious onClick={previousPage} className={currentPage === 1 && "opacity-50"} />
+                    <PaginationPrevious onClick={previousPage} className={currentPage === 1 ? "opacity-50" : ""} />
                 </PaginationItem>
                 }
                 {generatePaginationLinks({currentPage, totalPages, onPageChange})}
                 {showPreviousNext && totalPages &&
                 <PaginationItem>
-                    <PaginationNext onClick={nextPage} className={currentPage === totalPages && "opacity-50"} />
+                    <PaginationNext onClick={nextPage} className={currentPage === totalPages ? "opacity-50" : ""} />
                 </PaginationItem>
                 }
             </PaginationContent>
