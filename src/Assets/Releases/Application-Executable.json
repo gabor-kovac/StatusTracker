@@ -1,0 +1,140 @@
+[
+{
+"release": "tes2",
+"assetCount": 3,
+"tests": [
+{
+"testFile": "_fv-az1510-335_2024-04-05_13_57_03.trx",
+"summary": {
+  "@outcome": "Failed",
+  "Counters": {
+    "@total": "12",
+    "@executed": "12",
+    "@passed": "1",
+    "@failed": "11",
+    "@error": "0",
+    "@timeout": "0",
+    "@aborted": "0",
+    "@inconclusive": "0",
+    "@passedButRunAborted": "0",
+    "@notRunnable": "0",
+    "@notExecuted": "0",
+    "@disconnected": "0",
+    "@warning": "0",
+    "@completed": "0",
+    "@inProgress": "0",
+    "@pending": "0"
+  }
+}
+},
+{
+"testFile": "_fv-az962-41_2024-04-09_14_13_33.trx",
+"summary": {
+  "@outcome": "Failed",
+  "Counters": {
+    "@total": "12",
+    "@executed": "12",
+    "@passed": "11",
+    "@failed": "1",
+    "@error": "0",
+    "@timeout": "0",
+    "@aborted": "0",
+    "@inconclusive": "0",
+    "@passedButRunAborted": "0",
+    "@notRunnable": "0",
+    "@notExecuted": "0",
+    "@disconnected": "0",
+    "@warning": "0",
+    "@completed": "0",
+    "@inProgress": "0",
+    "@pending": "0"
+  }
+}
+},
+{
+"testFile": "_fv-az962-988_2024-04-05_13_47_41.trx",
+"summary": {
+  "@outcome": "Failed",
+  "Counters": {
+    "@total": "12",
+    "@executed": "12",
+    "@passed": "1",
+    "@failed": "11",
+    "@error": "0",
+    "@timeout": "0",
+    "@aborted": "0",
+    "@inconclusive": "0",
+    "@passedButRunAborted": "0",
+    "@notRunnable": "0",
+    "@notExecuted": "0",
+    "@disconnected": "0",
+    "@warning": "0",
+    "@completed": "0",
+    "@inProgress": "0",
+    "@pending": "0"
+  }
+}
+}
+]
+},
+{
+"release": "test",
+"assetCount": 2,
+"tests": [
+{
+"testFile": "_fv-az1652-81_2024-04-05_13_30_20.trx",
+"summary": {
+  "@outcome": "Failed",
+  "Counters": {
+    "@total": "12",
+    "@executed": "12",
+    "@passed": "1",
+    "@failed": "11",
+    "@error": "0",
+    "@timeout": "0",
+    "@aborted": "0",
+    "@inconclusive": "0",
+    "@passedButRunAborted": "0",
+    "@notRunnable": "0",
+    "@notExecuted": "0",
+    "@disconnected": "0",
+    "@warning": "0",
+    "@completed": "0",
+    "@inProgress": "0",
+    "@pending": "0"
+  }
+}
+},
+{
+"testFile": "_fv-az1814-36_2024-04-05_12_49_32.trx",
+"summary": {
+  "@outcome": "Failed",
+  "Counters": {
+    "@total": "12",
+    "@executed": "12",
+    "@passed": "1",
+    "@failed": "11",
+    "@error": "0",
+    "@timeout": "0",
+    "@aborted": "0",
+    "@inconclusive": "0",
+    "@passedButRunAborted": "0",
+    "@notRunnable": "0",
+    "@notExecuted": "0",
+    "@disconnected": "0",
+    "@warning": "0",
+    "@completed": "0",
+    "@inProgress": "0",
+    "@pending": "0"
+  }
+}
+}
+]
+},
+{
+"release": "v0.0.1",
+"assetCount": 0,
+"tests": [
+]
+}
+]

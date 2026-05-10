@@ -1,0 +1,289 @@
+{
+    "name": "Application-Monitor",
+    "version": null,
+    "updated": 1720004466524,
+    "wikiVersion": "1.0.0",
+    "releaseCandidates": [
+        "0.1.0",
+        "0.2.0",
+        "0.3.0",
+        "0.4.0",
+        "0.5.0",
+        "0.7.0",
+        "0.8.0",
+        "0.9.0"
+    ],
+    "tags": [
+        "0.1.0",
+        "0.2.0",
+        "0.3.0",
+        "0.4.0",
+        "0.5.0",
+        "0.7.0",
+        "0.8.0",
+        "0.9.0"
+    ],
+    "features": [
+        {
+            "branch": "example",
+            "last_commit_sha": "65a2b998d2225d49629225a93c4430bf0a594a53",
+            "last_commit_message": "AssemblyVersion increased to: 0.8.1",
+            "last_commit_date": "2024-06-20T13:40:21Z",
+            "last_commit_author": "dev007",
+            "pull_requests": []
+        },
+        {
+            "branch": "status-signal-fix",
+            "last_commit_sha": "6fddee9973bb8550ccf60ea757ec23560b53f0cd",
+            "last_commit_message": "AssemblyVersion increased to: 0.9.4",
+            "last_commit_date": "2024-07-03T10:57:13Z",
+            "last_commit_author": "dev007",
+            "last_commit_scan_result": "PASSED",
+            "last_commit_scan_date": "2024-07-03T10:59:09Z",
+            "pull_requests": []
+        },
+        {
+            "branch": "feature-logging",
+            "last_commit_sha": "a1b2c3d4e5f6g7h8i9j0",
+            "last_commit_message": "Add logging for monitor events",
+            "last_commit_date": "2024-07-04T09:15:00Z",
+            "last_commit_author": "dev101",
+            "pull_requests": [
+                {
+                    "pr_number": 101,
+                    "pr_title": "Add logging for monitor events",
+                    "pr_author": {
+                        "login": "dev101"
+                    },
+                    "created_at": "2024-07-04T09:20:00Z"
+                },
+                {
+                    "pr_number": 102,
+                    "pr_title": "Redesign logging for monitor events",
+                    "pr_author": {
+                        "login": "dev102"
+                    },
+                    "created_at": "2024-07-05T09:20:00Z"
+                }
+            ]
+        },
+        {
+            "branch": "feature-alerts",
+            "last_commit_sha": "b2c3d4e5f6g7h8i9j0a1",
+            "last_commit_message": "Implement alert system",
+            "last_commit_date": "2026-05-01T15:30:00Z",
+            "last_commit_author": "dev102",
+            "pull_requests": []
+        },
+        {
+            "branch": "feature-ui-redesign",
+            "last_commit_sha": "c3d4e5f6g7h8i9j0a1b2",
+            "last_commit_message": "UI redesign for dashboard",
+            "last_commit_date": "2024-07-02T12:00:00Z",
+            "last_commit_author": "dev103",
+            "pull_requests": [
+                {
+                    "pr_number": 102,
+                    "pr_title": "UI redesign for dashboard",
+                    "pr_author": {
+                        "login": "dev103"
+                    },
+                    "created_at": "2024-07-02T12:10:00Z"
+                }
+            ]
+        },
+        {
+            "branch": "feature-api-endpoints",
+            "last_commit_sha": "d4e5f6g7h8i9j0a1b2c3",
+            "last_commit_message": "Add new API endpoints",
+            "last_commit_date": "2024-07-01T08:45:00Z",
+            "last_commit_author": "dev104",
+            "pull_requests": []
+        },
+        {
+            "branch": "feature-perf-improvements",
+            "last_commit_sha": "e5f6g7h8i9j0a1b2c3d4",
+            "last_commit_message": "Performance improvements",
+            "last_commit_date": "2024-06-30T17:25:00Z",
+            "last_commit_author": "dev105",
+            "pull_requests": [
+                {
+                    "pr_number": 103,
+                    "pr_title": "Performance improvements",
+                    "pr_author": {
+                        "login": "dev105"
+                    },
+                    "created_at": "2024-06-30T17:30:00Z"
+                }
+            ]
+        },
+        {
+            "branch": "feature-auth-support",
+            "last_commit_sha": "f6g7h8i9j0a1b2c3d4e5",
+            "last_commit_message": "Add authentication support",
+            "last_commit_date": "2024-06-29T11:10:00Z",
+            "last_commit_author": "dev106",
+            "pull_requests": []
+        },
+        {
+            "branch": "feature-metrics",
+            "last_commit_sha": "g7h8i9j0a1b2c3d4e5f6",
+            "last_commit_message": "Add metrics collection",
+            "last_commit_date": "2024-06-28T14:55:00Z",
+            "last_commit_author": "dev107",
+            "pull_requests": []
+        },
+        {
+            "branch": "feature-docs-update",
+            "last_commit_sha": "h8i9j0a1b2c3d4e5f6g7",
+            "last_commit_message": "Update documentation",
+            "last_commit_date": "2024-06-27T10:05:00Z",
+            "last_commit_author": "dev108",
+            "pull_requests": [
+                {
+                    "pr_number": 104,
+                    "pr_title": "Update documentation",
+                    "pr_author": {
+                        "login": "dev108"
+                    },
+                    "created_at": "2024-06-27T10:10:00Z"
+                }
+            ]
+        },
+        {
+            "branch": "feature-ci-cd-pre",
+            "last_commit_sha": "i9j0a1b123d4e5f6g7h8",
+            "last_commit_message": "Add CI/CD pipeline",
+            "last_commit_date": "2024-06-26T15:40:00Z",
+            "last_commit_author": "dev109",
+            "pull_requests": []
+        },
+        {
+            "branch": "feature-ci-cd",
+            "last_commit_sha": "i9j0a1b2c3d4e5f6g7h8",
+            "last_commit_message": "Add CI/CD pipeline",
+            "last_commit_date": "2024-06-26T16:40:00Z",
+            "last_commit_author": "dev109",
+            "pull_requests": []
+        },
+        {
+            "branch": "feature-refactor-core",
+            "last_commit_sha": "j0a1b2c3d4e5f6g7h8i9",
+            "last_commit_message": "Refactor core logic",
+            "last_commit_date": "2024-06-25T13:35:00Z",
+            "last_commit_author": "dev110",
+            "pull_requests": [
+                {
+                    "pr_number": 105,
+                    "pr_title": "Refactor core logic",
+                    "pr_author": {
+                        "login": "dev110"
+                    },
+                    "created_at": "2024-06-25T13:40:00Z"
+                }
+            ]
+        },
+        {
+            "branch": "feature-health-checks",
+            "last_commit_sha": "k1b2c3d4e5f6g7h8i9j0",
+            "last_commit_message": "Add health checks",
+            "last_commit_date": "2024-06-24T10:20:00Z",
+            "last_commit_author": "dev111",
+            "pull_requests": [
+                {
+                    "pr_number": 106,
+                    "pr_title": "Add health checks",
+                    "pr_author": {
+                        "login": "dev111"
+                    },
+                    "created_at": "2024-06-24T10:25:00Z"
+                }
+            ]
+        },
+        {
+            "branch": "feature-dark-mode",
+            "last_commit_sha": "l2c3d4e5f6g7h8i9j0a1",
+            "last_commit_message": "Implement dark mode",
+            "last_commit_date": "2024-06-23T14:00:00Z",
+            "last_commit_author": "dev112",
+            "pull_requests": [
+                {
+                    "pr_number": 107,
+                    "pr_title": "Implement dark mode",
+                    "pr_author": {
+                        "login": "dev112"
+                    },
+                    "created_at": "2024-06-23T14:05:00Z"
+                }
+            ]
+        },
+        {
+            "branch": "feature-webhooks",
+            "last_commit_sha": "m3d4e5f6g7h8i9j0a1b2",
+            "last_commit_message": "Add webhook support",
+            "last_commit_date": "2024-06-22T09:50:00Z",
+            "last_commit_author": "dev113",
+            "pull_requests": [
+                {
+                    "pr_number": 108,
+                    "pr_title": "Add webhook support",
+                    "pr_author": {
+                        "login": "dev113"
+                    },
+                    "created_at": "2024-06-22T09:55:00Z"
+                }
+            ]
+        },
+        {
+            "branch": "feature-advanced-search",
+            "last_commit_sha": "n4e5f6g7h8i9j0a1b2c3",
+            "last_commit_message": "Advanced search functionality",
+            "last_commit_date": "2024-06-21T11:30:00Z",
+            "last_commit_author": "dev114",
+            "pull_requests": [
+                {
+                    "pr_number": 109,
+                    "pr_title": "Advanced search functionality",
+                    "pr_author": {
+                        "login": "dev114"
+                    },
+                    "created_at": "2024-06-21T11:35:00Z"
+                }
+            ]
+        },
+        {
+            "branch": "feature-multi-language",
+            "last_commit_sha": "o5f6g7h8i9j0a1b2c3d4",
+            "last_commit_message": "Add multi-language support",
+            "last_commit_date": "2024-06-20T16:10:00Z",
+            "last_commit_author": "dev115",
+            "pull_requests": [
+                {
+                    "pr_number": 110,
+                    "pr_title": "Add multi-language support",
+                    "pr_author": {
+                        "login": "dev115"
+                    },
+                    "created_at": "2024-06-20T16:15:00Z"
+                }
+            ]
+        },
+        {
+            "branch": "feature-accessibility",
+            "last_commit_sha": "p6g7h8i9j0a1b2c3d4e5",
+            "last_commit_message": "Accessibility improvements",
+            "last_commit_date": "2024-06-19T13:00:00Z",
+            "last_commit_author": "dev116",
+            "pull_requests": [
+                {
+                    "pr_number": 111,
+                    "pr_title": "Accessibility improvements",
+                    "pr_author": {
+                        "login": "dev116"
+                    },
+                    "created_at": "2024-06-19T13:05:00Z"
+                }
+            ]
+        }
+    ]
+}
