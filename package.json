@@ -7,7 +7,7 @@
     "start": "vite",
     "pre-build": "bash pre-build.sh",
     "build": "tsc -b && vite build",
-    "post-build": "mv docs/browser/* docs/; cp docs/index.html docs/404.html ; rmdir docs/browser",
+    "post-build": "mv dist/browser/* dist/; cp dist/index.html dist/404.html ; rmdir dist/browser",
     "lint": "eslint .",
     "preview": "vite preview"
   },
