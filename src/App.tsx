@@ -7,8 +7,10 @@ import { TooltipProvider } from "@/Components/ui/tooltip"
 import ThemeToggler from "@/Components/ThemeToggler";
 import VersionBadge from "@/Components/VersionBadge";
 import packageJson from "../package.json";
+import ReloadService from "./Services/ReloadService";
 
 function App() {
+    var reloadNeeded = ReloadService({ refreshIntervalSeconds: 5 });
     return (
         <ThemeProvider>
             <TooltipProvider>
@@ -20,6 +22,9 @@ function App() {
                     </Routes>
                 </div>
                 <footer className="fixed bottom-2 right-2 gap-2 flex items-center">
+                    {reloadNeeded &&
+                    <span className="text-red text-bold">RELOAD NEEDED</span>
+                    }
                     <VersionBadge version={packageJson.version} />
                     <ThemeToggler />
                 </footer>

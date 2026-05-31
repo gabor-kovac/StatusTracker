@@ -1,13 +1,13 @@
 {
   "name": "status-tracker",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "vite",
     "pre-build": "bash pre-build.sh",
     "build": "tsc -b && vite build",
-    "post-build": "cp dist/index.html dist/404.html",
+    "post-build": "bash post-build.sh",
     "lint": "eslint .",
     "preview": "vite preview"
   },
