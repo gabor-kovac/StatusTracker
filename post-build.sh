@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIST_PATH="./dist/StatusTracker"
+DIST_PATH="./dist"
 
 cp "$DIST_PATH/index.html" "$DIST_PATH/404.html"
 

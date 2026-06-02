@@ -26,17 +26,11 @@ jobs:
       - name: Install build tools
         run: sudo apt install moreutils -y
 
-      - name: Restore npm dependencies
+      - name: Restore dependencies
         run: npm ci
-        
-      - name: Run pre build
-        run: npm run pre-build
 
-      - name: Build Angular app
+      - name: Build application
         run: npm run build
-        
-      - name: Run post build
-        run: npm run post-build
 
       - name: Deploy to Github Pages
         if: success()
