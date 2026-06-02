@@ -1,4 +1,4 @@
-name: Build and deploy Angular app to Github Pages
+name: Build and deploy StatusTracker to Github Pages
 on:
   workflow_dispatch:
   push:
@@ -15,32 +15,26 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.2
 
       - name: Set up node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6.4.0
         with:
           node-version: '24'
           cache: 'npm'
 
-      - name: Install tools
+      - name: Install build tools
         run: sudo apt install moreutils -y
 
-      - name: Install npm dependencies
-        run: npm install
-        
-      - name: Run pre build
-        run: npm run pre-build
+      - name: Restore dependencies
+        run: npm ci
 
-      - name: Build Angular app
+      - name: Build application
         run: npm run build
-        
-      - name: Run post build
-        run: npm run post-build
 
       - name: Deploy to Github Pages
         if: success()
-        uses: peaceiris/actions-gh-pages@v4.0.0
+        uses: peaceiris/actions-gh-pages@v4.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: page
