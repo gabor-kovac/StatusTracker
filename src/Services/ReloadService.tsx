@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const checkUrl = "http://localhost:8123/StatusTracker/hash.json";
-
-export type ReloadServiceProps = {
+export interface ReloadServiceProps {
     refreshIntervalSeconds: number
 }
 
@@ -10,16 +8,16 @@ interface HashResponse {
     sha: string
 }
 
-export default function ReloadService(props: ReloadServiceProps) {
+export default function ReloadService({refreshIntervalSeconds}: ReloadServiceProps) {
 
     const initialCommit = useRef<string | null>(null);
     const [updateAvailable, setUpdateAvailable] = useState(false);
 
-    console.log("Refresh interval set at: " + props.refreshIntervalSeconds + "s");
+    console.log("Refresh interval set at: " + refreshIntervalSeconds + "s");
 
     useEffect(() => {
         const checkHash = async () => {
-            var response = await fetch(checkUrl, { cache: "no-store" });
+            var response = await fetch('/hash.json', { cache: "no-store" });
             if (response != null) {
                 var responseJson = await response.json();
                 if (responseJson != null && responseJson as HashResponse) {
@@ -44,7 +42,7 @@ export default function ReloadService(props: ReloadServiceProps) {
             }
         }
 
-        const interval = setInterval(checkHash, props.refreshIntervalSeconds * 1000);
+        const interval = setInterval(checkHash, refreshIntervalSeconds * 1000);
 
         return () => clearInterval(interval);
 
