@@ -17,7 +17,7 @@ export default function ReloadService({refreshIntervalSeconds}: ReloadServicePro
 
     useEffect(() => {
         const checkHash = async () => {
-            var response = await fetch('/hash.json', { cache: "no-store" });
+            var response = await fetch('hash.json', { cache: "no-store" });
             if (response != null) {
                 var responseJson = await response.json();
                 if (responseJson != null && responseJson as HashResponse) {
