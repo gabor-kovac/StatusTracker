@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-  base: "/StatusTracker/",
+  base: "/",
   publicDir: "public",
   resolve: {
     alias: {

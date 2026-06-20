@@ -11,6 +11,8 @@ import packageJson from "../package.json";
 import ReloadService from "./Services/ReloadService";
 import { Toaster } from "@/Components/ui/sonner";
 import { toast } from "sonner"
+import { Button } from "./Components/ui/button";
+import { X } from "lucide-react";
 
 export default function App() {
     const refreshInterval = parseInt(import.meta.env.VITE_REFRESH_INTERVAL_SECONDS) || 5;
@@ -25,20 +27,21 @@ export default function App() {
 
         const id = toast.custom(
             (toastId) => (
-                <div className="flex items-center gap-3">
+                <div className="flex items-center justify-between gap-3 bg-yellow-200 text-foreground dark:text-background p-3 rounded">
                     <span>Reload needed please refresh the page.</span>
-                    <button
+                    <Button
                         type="button"
                         aria-label="Dismiss reload notification"
-                        className="rounded px-2 py-1 text-sm font-semibold"
+                        variant="secondary"
+                        size="icon-lg"
                         onClick={() => {
                             toast.dismiss(toastId);
                             setReloadToastId(null);
                             setReloadToastDismissed(true);
                         }}
                     >
-                        ×
-                    </button>
+                        <X />
+                    </Button>
                 </div>
             ),
             {
@@ -46,7 +49,6 @@ export default function App() {
                 closeButton: false,
                 dismissible: false,
                 position: "bottom-center",
-                description: "A new version of the application is available. Please refresh the page to load the latest updates.",
                 onDismiss: () => setReloadToastDismissed(true),
             }
         );
