@@ -5,15 +5,11 @@ import {
     TooltipTrigger,
 } from "@/Components/ui/tooltip";
 
-enum Freshness {
-    Fresh = "fresh",
-    Stale = "stale",
-    Unknown = "unknown"
-}
+type Freshness = 'fresh' | 'stale' | 'unknown';
 
 function howFresh(timestamp?: number | null): Freshness {
     if(timestamp === undefined || timestamp === null) {
-        return Freshness.Unknown;
+        return 'unknown';
     }
     const now = Date.now();
     const parsedTimestamp = timestamp ?? 0;
@@ -21,9 +17,9 @@ function howFresh(timestamp?: number | null): Freshness {
     const delta = now - parsedTimestamp;
 
     if (delta < warningThreshold) {
-        return Freshness.Fresh;
+        return 'fresh';
     } else {
-        return Freshness.Stale;
+        return 'stale';
     }
 }
 
@@ -35,14 +31,14 @@ export function InfoFreshIcon({ timestamp }: { timestamp?: number | null }) {
     return (
         <Tooltip>
             <TooltipTrigger>
-                {freshness === Freshness.Fresh && <ClockCheck size="18" className="text-green-500" /> }
-                {freshness === Freshness.Stale && <ClockFading size="18" className="text-orange-500" />}
-                {freshness === Freshness.Unknown && <CircleQuestionMark size="18" className="text-cyan-500" />}
+                {freshness === 'fresh' && <ClockCheck size="18" className="text-green-500" /> }
+                {freshness === 'stale' && <ClockFading size="18" className="text-orange-500" />}
+                {freshness === 'unknown' && <CircleQuestionMark size="18" className="text-cyan-500" />}
             </TooltipTrigger>
             <TooltipContent>
-                {freshness === Freshness.Fresh && <p>Info is fresh: {dateParsed} </p>}
-                {freshness === Freshness.Stale && <p>Info is stale: {dateParsed}</p>}
-                {freshness === Freshness.Unknown && <p>Info freshness unknown</p>}
+                {freshness === 'fresh' && <p>Info is fresh: {dateParsed} </p>}
+                {freshness === 'stale' && <p>Info is stale: {dateParsed}</p>}
+                {freshness === 'unknown' && <p>Info freshness unknown</p>}
             </TooltipContent>
         </Tooltip>
     )

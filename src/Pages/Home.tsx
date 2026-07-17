@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { AppList } from "../Assets/ApplicationData";
-import { Button } from "@/Components/ui/button";
 import {
   Table,
   TableBody,
@@ -10,13 +8,20 @@ import {
   TableHeader,
   TableRow,
 } from "@/Components/ui/table";
-import { SelectScrollable, type SelectItems } from "@/Components/SelectScrollable";
+import { SelectScrollable } from "@/Components/SelectScrollable";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/Components/ui/input-group";
-import { List, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { InfoFreshIcon } from "@/Components/InfoFreshIcon";
 import FeatureList from "@/Components/FeatureList";
 import WikiVersion from "@/Components/WikiVersion";
 import type { Application } from '../Types/Application';
+import { rcompare, valid } from "semver";
+
+function forgivingSort(versionList: any[]) {
+    const notSemver: any[] = versionList.filter(v => !valid(v, true))
+    const semver: any[] = versionList.filter(v => valid(v, true)).sort(rcompare);
+    return [...semver, ...notSemver]
+};
 
 export default function Home() {
 
@@ -46,13 +51,6 @@ export default function Home() {
                             </InputGroup>
                         </div>
                     </TableHead>
-                    <TableHead colSpan={6}></TableHead>
-                    <TableHead>
-                        <Button size="lg">
-                            <Link to="/releases">Releases</Link>
-                            <List data-icon="inline-end" />
-                        </Button>
-                    </TableHead>
                 </TableRow>
                 <TableRow>
                     <TableHead>Name</TableHead>
@@ -60,9 +58,7 @@ export default function Home() {
                     <TableHead>Wiki</TableHead>
                     <TableHead>Release Candidates</TableHead>
                     <TableHead>Tags</TableHead>
-                    <TableHead>Features</TableHead>
-                    <TableHead></TableHead>
-                    <TableHead></TableHead>
+                    <TableHead >Features</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -77,7 +73,7 @@ export default function Home() {
                     </TableCell>
                     <TableCell>
                         <SelectScrollable
-                            items={app.releaseCandidates.map(rc => ({ label: rc, value: rc }))}
+                            items={app.releaseCandidates.sort(rcompare).map(rc => ({ label: rc, value: rc }))}
                             onSelect={value => {
                                 if (value) {
                                     window.open(`https://github.com/${import.meta.env.VITE_ORGANIZATION_NAME}/${app.name}/tree/${value}`, '_blank');
@@ -87,7 +83,7 @@ export default function Home() {
                     </TableCell>
                     <TableCell>
                         <SelectScrollable
-                            items={app.tags.map(tag => ({ label: tag, value: tag }))}
+                            items={forgivingSort(app.tags).map(tag => ({ label: tag, value: tag }))}
                             onSelect={value => {
                                 if (value) {
                                     window.open(`https://github.com/${import.meta.env.VITE_ORGANIZATION_NAME}/${app.name}/tree/${value}`, '_blank');
@@ -100,8 +96,6 @@ export default function Home() {
                     </TableCell>
                     <TableCell>
                         <InfoFreshIcon timestamp={app.updated} />
-                    </TableCell>
-                    <TableCell>
                     </TableCell>
                 </TableRow>
             ))}

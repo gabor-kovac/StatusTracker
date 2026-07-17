@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { Theme } from '../../Types/Themes';
+import { type Theme } from '../../Types/Themes';
 
 type ThemeContextProviderProps = {
     children: React.ReactNode;
@@ -14,22 +14,22 @@ type ThemeProviderState = {
 }
 
 const initialState: ThemeProviderState = {
-    theme: Theme.System,
+    theme: 'system',
     setTheme: () => null,
     toggleTheme: () => {},
 }
 
 export const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
-export const ThemeProvider = ({ children, defaultTheme = Theme.System, storageKey = "theme", ...props }: ThemeContextProviderProps) => {
+export const ThemeProvider = ({ children, defaultTheme = 'system', storageKey = 'theme', ...props }: ThemeContextProviderProps) => {
     const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem(storageKey) as Theme) || defaultTheme);
 
     useEffect(() => {
         const root = globalThis.document.documentElement;
-        root.classList.remove(Theme.Light, Theme.Dark);
+        root.classList.remove('light', 'dark');
 
-        if (theme === Theme.System) {
-            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? Theme.Dark : Theme.Light;
+        if (theme === 'system') {
+            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light';
             root.classList.add(systemTheme);
             return;
         }
@@ -43,14 +43,14 @@ export const ThemeProvider = ({ children, defaultTheme = Theme.System, storageKe
 
     const toggleTheme = () => {
         switch (theme) {
-            case Theme.Light:
-                setThemeAndStore(Theme.Dark);
+            case 'light':
+                setThemeAndStore('dark');
                 break;
-            case Theme.Dark:
-                setThemeAndStore(Theme.System);
+            case 'dark':
+                setThemeAndStore('system');
                 break;
             default:
-                setThemeAndStore(Theme.Light);
+                setThemeAndStore('light');
         }
     };
 

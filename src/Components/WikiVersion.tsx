@@ -1,11 +1,7 @@
 import { CircleAlert, CircleCheck } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
-enum VersionStatus {
-    Unknown,
-    OK,
-    Outdated
-}
+type VersionStatus = 'unknown' | 'ok' | 'outdated';
 
 type WikiVersionProps = {
     releaseVersion?: string | null;
@@ -14,18 +10,18 @@ type WikiVersionProps = {
 
 export default function WikiVersion({ releaseVersion, wikiVersion }: WikiVersionProps) {
 
-    let status: VersionStatus = VersionStatus.Unknown;
+    let status: VersionStatus = 'unknown';
     let versionNotice: string = "Wiki version is unknown!";
     let versionColor: string = "text-red-500";
-
-    if(!(releaseVersion === null && wikiVersion === null)) {
+    
+    if(releaseVersion !== null || wikiVersion !== null) {
         if(releaseVersion === wikiVersion) {
             versionNotice = "Wiki version is up to date";
-            status = VersionStatus.OK;
+            status = 'ok';
             versionColor = "text-green-500";
         } else {
             versionNotice = "Does not match release version!";
-            status = VersionStatus.Outdated;
+            status = 'outdated';
             versionColor = "text-orange-500";
         }
     }
@@ -35,8 +31,9 @@ export default function WikiVersion({ releaseVersion, wikiVersion }: WikiVersion
             <TooltipTrigger>
                 <p className={`inline-block relative ${versionColor} mr-4`}>
                     {wikiVersion ?? "Error"}
-                    {status === VersionStatus.OK ? 
-                    <CircleCheck size="16" className="absolute top-[-10px] right-[-18px]" /> :
+                    {status === 'ok' ? 
+                    <CircleCheck size="16" className="absolute top-[-10px] right-[-18px]" /> 
+                    :
                     <CircleAlert size="16" className="absolute top-[-10px] right-[-18px]" />}
                 </p>
             </TooltipTrigger>

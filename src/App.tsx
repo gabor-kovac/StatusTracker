@@ -1,8 +1,5 @@
-import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Home from "./Pages/Home";
-import Compatibility from "./Pages/Compatibility";
-import Releases from "./Pages/Releases";
 import { ThemeProvider } from "./Services/ThemeProvider/ThemeContextProvider";
 import { TooltipProvider } from "@/Components/ui/tooltip"
 import ThemeToggler from "@/Components/ThemeToggler";
@@ -46,10 +43,7 @@ export default function App() {
             ),
             {
                 duration: Infinity,
-                closeButton: false,
-                dismissible: false,
-                position: "bottom-center",
-                onDismiss: () => setReloadToastDismissed(true),
+                position: "bottom-center"
             }
         );
 
@@ -61,11 +55,7 @@ export default function App() {
             <TooltipProvider>
                 <Toaster />
                 <div className="grid w-full min-h-screen">
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/compatibility" element={<Compatibility />} />
-                        <Route path="/releases" element={<Releases />} />
-                    </Routes>
+                    <Home />
                 </div>
                 <footer className="fixed bottom-2 right-2 gap-2 flex items-center">
                     <VersionBadge version={packageJson.version} />
