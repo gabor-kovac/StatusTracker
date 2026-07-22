@@ -1,1 +1,14 @@
-[]
+[
+{
+"release": "3.0.0",
+"assetCount": 1,
+"tests": [
+]
+},
+{
+"release": "2.0.0",
+"assetCount": 0,
+"tests": [
+]
+}
+]
