@@ -56,9 +56,10 @@ export default function Home() {
                     <TableHead>Name</TableHead>
                     <TableHead>Release</TableHead>
                     <TableHead>Wiki</TableHead>
+                    <TableHead>Releases</TableHead>
                     <TableHead>Release Candidates</TableHead>
                     <TableHead>Tags</TableHead>
-                    <TableHead >Features</TableHead>
+                    <TableHead>Features</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -70,6 +71,16 @@ export default function Home() {
                         <div className="flex flex-col items-center">
                             <WikiVersion releaseVersion={app.version} wikiVersion={app.wikiVersion} />
                         </div>
+                    </TableCell>
+                    <TableCell>
+                        <SelectScrollable
+                            items={forgivingSort(app.releases).map(release => ({ label: release, value: release }))}
+                            onSelect={value => {
+                                if (value) {
+                                    window.open(`https://github.com/${import.meta.env.VITE_ORGANIZATION_NAME}/${app.name}/releases/${value}`, '_blank');
+                                }
+                            }}
+                        />
                     </TableCell>
                     <TableCell>
                         <SelectScrollable

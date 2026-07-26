@@ -3,6 +3,7 @@ export interface Application {
 	version: string | null;
 	updated?: number | null;
 	wikiVersion: string | null;
+	releases: string[];
 	releaseCandidates: string[];
 	tags: string[];
 	features?: Feature[];
@@ -10,20 +11,18 @@ export interface Application {
 
 export interface Feature {
 	branch: string,
-	last_commit_sha: string,
-	last_commit_message?: string,
-	last_commit_date: string,
-	last_commit_author: string,
-	last_commit_scan_result?: string,
-	last_commit_scan_date?: string,
-	pull_requests?: PullRequest[]
+	lastCommitSha: string,
+	lastCommitMessage?: string,
+	lastCommitDate: string,
+	lastCommitAuthor: string,
+	pullRequests?: PullRequest[]
 }
 
 export interface PullRequest {
-	pr_number: number | null,
-	pr_title: string | null,
-	pr_author: Author | null,
-	created_at: string
+	number: number | null,
+	title: string | null,
+	author: Author | null,
+	createdAt: string
 }
 
 export interface Author {

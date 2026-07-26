@@ -3,16 +3,17 @@
 "version": "3.0.0",
 "updated": 1784833970770,
 "wikiVersion": "3.0.0",
+"releases": [],
 "releaseCandidates": ["1.2.0","2.0.0","2.1.0","3.0.0"],
 "tags": ["0.1.8","1.1.8","1.2.0","2.0.0","2.1.0","3.0.0"],
 "features": [
 {
 "branch": "feature-br",
-"last_commit_sha": "d4184c5023126a59fe02062d6ba1e50422905d49",
-"last_commit_message": "CI: bump package version to 2.0.1",
-"last_commit_date": "2025-07-17T09:18:36Z",
-"last_commit_author": "github-actions[bot]",
-"pull_requests": []
+"lastCommitSha": "d4184c5023126a59fe02062d6ba1e50422905d49",
+"lastCommitMessage": "CI: bump package version to 2.0.1",
+"lastCommitDate": "2025-07-17T09:18:36Z",
+"lastCommitAuthor": "github-actions[bot]",
+"pullRequests": []
 }
 ]
 }
