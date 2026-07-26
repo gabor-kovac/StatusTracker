@@ -59,7 +59,7 @@ export default function FeatureList({ features }: { features: Feature[] | undefi
 
     const [currentPage, setCurrentPage] = useState(1);
 
-    const repoUrl = "https://github.com/org/repo";
+    const repoUrl = `https://github.com/${import.meta.env.VITE_ORGANIZATION_NAME}/${app.name}`;
 
     const totalPages = Math.ceil((features?.length || 0) / PAGINATE_SIZE);
     const currentFeatures = features?.slice((currentPage - 1) * PAGINATE_SIZE, currentPage * PAGINATE_SIZE);
