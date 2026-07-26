@@ -91,7 +91,9 @@ export default function FeatureList({ applicationName, features }: { application
                         {currentFeatures?.map((feature, index) => (
                             <AccordionItem key={feature.branch+index}>
                                 <AccordionTrigger className="gap-0 items-center">
-                                    {feature.branch}
+                                    <a href={repoUrl+"/tree/"+feature.branch} target="_blank">
+                                        {feature.branch}
+                                    </a>
                                     {
                                     (elapsedMoreThan(feature.lastCommitDate, WARN_FEATURE_AGE_DAYS) || 
                                     feature.pullRequests?.some(pr => elapsedMoreThan(pr.createdAt, WARN_COMMIT_AGE_DAYS))) &&
