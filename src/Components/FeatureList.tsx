@@ -49,7 +49,7 @@ function checkFeatures(features: Feature[]): boolean {
     return hasOldFeature || hasOldCommit;
 }
 
-export default function FeatureList({ features }: { features: Feature[] | undefined }) {
+export default function FeatureList({ applicationName, features }: { applicationName: string; features: Feature[] | undefined }) {
 
     let lastCommitedFeature: Feature | undefined = undefined;
 
@@ -59,7 +59,7 @@ export default function FeatureList({ features }: { features: Feature[] | undefi
 
     const [currentPage, setCurrentPage] = useState(1);
 
-    const repoUrl = `https://github.com/${import.meta.env.VITE_ORGANIZATION_NAME}/${app.name}`;
+    const repoUrl = `https://github.com/${import.meta.env.VITE_ORGANIZATION_NAME}/${applicationName}`;
 
     const totalPages = Math.ceil((features?.length || 0) / PAGINATE_SIZE);
     const currentFeatures = features?.slice((currentPage - 1) * PAGINATE_SIZE, currentPage * PAGINATE_SIZE);

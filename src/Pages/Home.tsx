@@ -103,7 +103,7 @@ export default function Home() {
                         />
                     </TableCell>
                     <TableCell>
-                        <FeatureList features={app.features}></FeatureList>
+                        <FeatureList applicationName={app.name} features={app.features}></FeatureList>
                     </TableCell>
                     <TableCell>
                         <InfoFreshIcon timestamp={app.updated} />
