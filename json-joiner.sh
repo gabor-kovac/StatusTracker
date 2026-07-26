@@ -6,10 +6,3 @@ if [ -z "$(ls)" ]; then
 else
     jq -s "." $(ls) > ../applicationDataFile.json
 fi
-
-cd ../Compatibilities
-if [ -z "$(ls)" ]; then
-    echo "[]" > ../compatibilityDataFile.json
-else
-    jq -s ".[]" $(ls) > ../compatibilityDataFile.json
-fi
