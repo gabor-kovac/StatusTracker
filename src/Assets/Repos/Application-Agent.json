@@ -1,19 +1,11 @@
 {
-"name": "Application-Agent",
-"version": "3.0.0",
-"updated": 1784833970770,
+"name": "workflow",
+"version": null,
+"updated": 1785085744222,
 "wikiVersion": "3.0.0",
 "releases": [],
-"releaseCandidates": ["1.2.0","2.0.0","2.1.0","3.0.0"],
-"tags": ["0.1.8","1.1.8","1.2.0","2.0.0","2.1.0","3.0.0"],
+"releaseCandidates": [],
+"tags": [],
 "features": [
-{
-"branch": "feature-br",
-"lastCommitSha": "d4184c5023126a59fe02062d6ba1e50422905d49",
-"lastCommitMessage": "CI: bump package version to 2.0.1",
-"lastCommitDate": "2025-07-17T09:18:36Z",
-"lastCommitAuthor": "github-actions[bot]",
-"pullRequests": []
-}
 ]
 }
