@@ -87,7 +87,7 @@
             "lastCommitMessage": "AssemblyVersion increased to: 2.11.5",
             "lastCommitDate": "2024-06-06T12:44:22Z",
             "lastCommitAuthor": "dev007",
-            "pull_requests": []
+            "pullRequests": []
         },
         {
             "branch": "can-fix3",
