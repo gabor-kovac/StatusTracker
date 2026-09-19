@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - main
-  # schedule:
-  #   - cron: '32 1 * * *'
+      
 permissions:
   contents: write
   
