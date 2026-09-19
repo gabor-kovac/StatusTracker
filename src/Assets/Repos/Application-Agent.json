@@ -13,7 +13,7 @@
 "lastCommitMessage": "CI: bump package version to 2.1.1",
 "lastCommitDate": "2026-09-19T16:37:38Z",
 "lastCommitAuthor": "github-actions[bot]",
-"pullRequests": [{"number": 13, "title": "Update documentation", "author": { "id": "U_kgDOB5aO1A", "is_bot": false, "login": "gabor-kovac", "name": "" }, "createdAt": "2026-07-26T15:49:22Z"}]
+"pullRequests": []
 },
 {
 "branch": "feature-br",
