@@ -1,0 +1,19 @@
+{
+"name": "Service-GatewayServer",
+"version": null,
+"updated": 1790281105008,
+"wikiVersion": null,
+"releases": [],
+"releaseCandidates": [],
+"tags": [],
+"features": [
+{
+"branch": "backend-logic",
+"lastCommitSha": "72d784059f791be854cfd042f488372a4357d34e",
+"lastCommitMessage": "CI: bump C# version to 1.0.1",
+"lastCommitDate": "2026-09-24T20:14:42Z",
+"lastCommitAuthor": "github-actions[bot]",
+"pullRequests": []
+}
+]
+}
