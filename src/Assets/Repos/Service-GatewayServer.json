@@ -1,7 +1,7 @@
 {
 "name": "Service-GatewayServer",
 "version": null,
-"updated": 1790281105008,
+"updated": 1790281479002,
 "wikiVersion": null,
 "releases": [],
 "releaseCandidates": [],
@@ -9,11 +9,11 @@
 "features": [
 {
 "branch": "backend-logic",
-"lastCommitSha": "72d784059f791be854cfd042f488372a4357d34e",
-"lastCommitMessage": "CI: bump C# version to 1.0.1",
-"lastCommitDate": "2026-09-24T20:14:42Z",
+"lastCommitSha": "97e05a115962671a2a6143285b8955193bba1c63",
+"lastCommitMessage": "CI: bump C# version to 1.0.2",
+"lastCommitDate": "2026-09-24T20:24:07Z",
 "lastCommitAuthor": "github-actions[bot]",
-"pullRequests": []
+"pullRequests": [{"number": 1, "title": "Backend logic", "author": { "id": "U_kgDOB5aO1A", "is_bot": false, "login": "gabor-kovac", "name": "" }, "createdAt": "2026-09-24T20:22:30Z"}]
 }
 ]
 }
