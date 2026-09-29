@@ -1,7 +1,7 @@
 {
 "name": "Application-Agent",
 "version": "3.0.0",
-"updated": 1790672893539,
+"updated": 1790677555202,
 "wikiVersion": "3.0.0",
 "releases": ["3.0.0","2.0.0"],
 "releaseCandidates": ["1.2.0","2.1.0"],
@@ -17,9 +17,9 @@
 },
 {
 "branch": "feature-br",
-"lastCommitSha": "9a488dfefc9f9bde6f1aa917b0953ae066d80c81",
-"lastCommitMessage": "CI: bump package version to 2.1.4",
-"lastCommitDate": "2026-07-26T17:12:44Z",
+"lastCommitSha": "76569b31b15cbf934795fc0e0be3a89c872f1e85",
+"lastCommitMessage": "CI: bump package version to 2.1.5",
+"lastCommitDate": "2026-09-29T10:25:00Z",
 "lastCommitAuthor": "github-actions[bot]",
 "pullRequests": [{"number": 13, "title": "Update documentation", "author": { "id": "U_kgDOB5aO1A", "is_bot": false, "login": "gabor-kovac", "name": "" }, "createdAt": "2026-07-26T15:49:22Z"}]
 }
