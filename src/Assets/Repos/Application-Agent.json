@@ -1,7 +1,7 @@
 {
 "name": "Application-Agent",
 "version": "3.0.0",
-"updated": 1790672685008,
+"updated": 1790672893539,
 "wikiVersion": "3.0.0",
 "releases": ["3.0.0","2.0.0"],
 "releaseCandidates": ["1.2.0","2.1.0"],
@@ -9,11 +9,11 @@
 "features": [
 {
 "branch": "bugfix",
-"lastCommitSha": "174ef8a3a23724063ab8a4575300ecfca73cbd80",
-"lastCommitMessage": "CI: bump package version to 2.1.2",
-"lastCommitDate": "2026-09-29T09:03:44Z",
+"lastCommitSha": "93456e1f9ce014dd43a28751f265547c81803dcd",
+"lastCommitMessage": "CI: bump package version to 2.1.3",
+"lastCommitDate": "2026-09-29T09:07:17Z",
 "lastCommitAuthor": "github-actions[bot]",
-"pullRequests": [{"number": 14, "title": "CI: bump package version to 2.1.1", "author": { "id": "U_kgDOB5aO1A", "is_bot": false, "login": "gabor-kovac", "name": "" }, "createdAt": "2026-09-29T09:02:12Z"}]
+"pullRequests": []
 },
 {
 "branch": "feature-br",
